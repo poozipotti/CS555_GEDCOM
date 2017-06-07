@@ -1,0 +1,408 @@
+0 NOTE George Beckert
+0|NOTE|Y|George Beckert|
+1 NOTE i pledge my honor i have abided by the stevens honor system
+1|NOTE|Y|i pledge my honor i have abided by the stevens honor system|
+0 HEAD
+0|HEAD|N|
+1 SOUR Family Echo
+1|SOUR|N|Family Echo|
+2 WWW http://www.familyecho.com/
+2|WWW|N|http://www.familyecho.com/|
+1 FILE My Family
+1|FILE|N|My Family|
+1 DATE 24 MAY 2017
+1|DATE|Y|24 MAY 2017|
+1 DEST ANSTFILE
+1|DEST|N|ANSTFILE|
+1 GEDC
+1|GEDC|N|
+2 VERS 5.5.1
+2|VERS|N|5.5.1|
+2 FORM LINEAGE-LINKED
+2|FORM|N|LINEAGE-LINKED|
+1 SUBM @I3@
+1|SUBM|N|@I3@|
+2 NAME George 
+2|NAME|Y|George |
+1 SUBN
+1|SUBN|N|
+1 CHAR UTF-8
+1|CHAR|N|UTF-8|
+0 @I1@ INDI
+0|@I1@|N|INDI|
+1 NAME Doug /Beckert/
+1|NAME|Y|Doug /Beckert/|
+2 GIVN Doug
+2|GIVN|N|Doug|
+2 SURN Beckert
+2|SURN|Y|Beckert|
+2 _MARNM Beckert
+2|_MARNM|N|Beckert|
+1 SEX M
+1|SEX|Y|M|
+1 BIRT
+1|BIRT|N|
+2 DATE 25 MAY 1959
+2|DATE|Y|25 MAY 1959|
+1 FAMS @F1@
+1|FAMS|Y|@F1@|
+1 FAMC @F2@
+1|FAMC|Y|@F2@|
+0 @I2@ INDI
+0|@I2@|N|INDI|
+1 NAME Anne /Dyck/
+1|NAME|Y|Anne /Dyck/|
+2 GIVN Anne
+2|GIVN|N|Anne|
+2 SURN Dyck
+2|SURN|Y|Dyck|
+2 _MARNM Beckert
+2|_MARNM|N|Beckert|
+1 SEX F
+1|SEX|Y|F|
+1 BIRT
+1|BIRT|N|
+2 DATE 20 SEP 0161
+2|DATE|Y|20 SEP 0161|
+1 FAMS @F1@
+1|FAMS|Y|@F1@|
+1 FAMS @F3@
+1|FAMS|Y|@F3@|
+1 FAMC @F4@
+1|FAMC|Y|@F4@|
+0 @I3@ INDI
+0|@I3@|N|INDI|
+1 NAME George Beckert /Beckert/
+1|NAME|Y|George Beckert /Beckert/|
+2 GIVN George Beckert
+2|GIVN|N|George Beckert|
+2 SURN Beckert
+2|SURN|Y|Beckert|
+2 _MARNM Beckert
+2|_MARNM|N|Beckert|
+1 SEX M
+1|SEX|Y|M|
+1 BIRT
+1|BIRT|N|
+2 DATE 11 JAN 1996
+2|DATE|Y|11 JAN 1996|
+1 FAMC @F1@
+1|FAMC|Y|@F1@|
+0 @I4@ INDI
+0|@I4@|N|INDI|
+1 NAME Charity /Beckert/
+1|NAME|Y|Charity /Beckert/|
+2 GIVN Charity
+2|GIVN|N|Charity|
+2 SURN Beckert
+2|SURN|Y|Beckert|
+2 _MARNM Beckert
+2|_MARNM|N|Beckert|
+1 SEX F
+1|SEX|Y|F|
+1 BIRT
+1|BIRT|N|
+2 DATE 7 JAN 1994
+2|DATE|Y|7 JAN 1994|
+1 FAMC @F1@
+1|FAMC|Y|@F1@|
+0 @I5@ INDI
+0|@I5@|N|INDI|
+1 NAME Max /Beckert/
+1|NAME|Y|Max /Beckert/|
+2 GIVN Max
+2|GIVN|N|Max|
+2 SURN Beckert
+2|SURN|Y|Beckert|
+2 _MARNM Beckert
+2|_MARNM|N|Beckert|
+1 SEX M
+1|SEX|Y|M|
+1 BIRT
+1|BIRT|N|
+2 DATE 30 DEC 2004
+2|DATE|Y|30 DEC 2004|
+1 FAMC @F1@
+1|FAMC|Y|@F1@|
+0 @I6@ INDI
+0|@I6@|N|INDI|
+1 NAME George /Beckert/
+1|NAME|Y|George /Beckert/|
+2 GIVN George
+2|GIVN|N|George|
+2 SURN Beckert
+2|SURN|Y|Beckert|
+2 _MARNM Beckert
+2|_MARNM|N|Beckert|
+1 SEX M
+1|SEX|Y|M|
+1 BIRT
+1|BIRT|N|
+2 DATE 5 APR 1926
+2|DATE|Y|5 APR 1926|
+1 DEAT Y
+1|DEAT|Y|Y|
+2 DATE 4 FEB 2000
+2|DATE|Y|4 FEB 2000|
+1 FAMS @F2@
+1|FAMS|Y|@F2@|
+0 @I7@ INDI
+0|@I7@|N|INDI|
+1 NAME Maragaret /Beckert/
+1|NAME|Y|Maragaret /Beckert/|
+2 GIVN Maragaret
+2|GIVN|N|Maragaret|
+2 SURN Beckert
+2|SURN|Y|Beckert|
+2 _MARNM Beckert
+2|_MARNM|N|Beckert|
+1 SEX F
+1|SEX|Y|F|
+1 BIRT
+1|BIRT|N|
+2 DATE 3 MAR 1929
+2|DATE|Y|3 MAR 1929|
+1 DEAT Y
+1|DEAT|Y|Y|
+2 DATE 7 FEB 2014
+2|DATE|Y|7 FEB 2014|
+1 FAMS @F2@
+1|FAMS|Y|@F2@|
+0 @I8@ INDI
+0|@I8@|N|INDI|
+1 NAME Norman /Dyck/
+1|NAME|Y|Norman /Dyck/|
+2 GIVN Norman
+2|GIVN|N|Norman|
+2 SURN Dyck
+2|SURN|Y|Dyck|
+2 _MARNM Dyck
+2|_MARNM|N|Dyck|
+1 SEX M
+1|SEX|Y|M|
+1 BIRT
+1|BIRT|N|
+2 DATE 7 APR 1927
+2|DATE|Y|7 APR 1927|
+1 DEAT Y
+1|DEAT|Y|Y|
+2 DATE 4 MAY 2015
+2|DATE|Y|4 MAY 2015|
+1 FAMS @F4@
+1|FAMS|Y|@F4@|
+0 @I9@ INDI
+0|@I9@|N|INDI|
+1 NAME Dorthy /Hostetler/
+1|NAME|Y|Dorthy /Hostetler/|
+2 GIVN Dorthy
+2|GIVN|N|Dorthy|
+2 SURN Hostetler
+2|SURN|Y|Hostetler|
+2 _MARNM Dyck
+2|_MARNM|N|Dyck|
+1 SEX F
+1|SEX|Y|F|
+1 BIRT
+1|BIRT|N|
+2 DATE 28 MAR 1928
+2|DATE|Y|28 MAR 1928|
+1 FAMS @F4@
+1|FAMS|Y|@F4@|
+0 @I10@ INDI
+0|@I10@|N|INDI|
+1 NAME Paul Dyck /Dyck/
+1|NAME|Y|Paul Dyck /Dyck/|
+2 GIVN Paul Dyck
+2|GIVN|N|Paul Dyck|
+2 SURN Dyck
+2|SURN|Y|Dyck|
+2 _MARNM Dyck
+2|_MARNM|N|Dyck|
+1 SEX M
+1|SEX|Y|M|
+1 BIRT
+1|BIRT|N|
+2 DATE 13 OCT 1958
+2|DATE|Y|13 OCT 1958|
+1 FAMC @F4@
+1|FAMC|Y|@F4@|
+0 @I11@ INDI
+0|@I11@|N|INDI|
+1 NAME Cindy /Beckert/
+1|NAME|Y|Cindy /Beckert/|
+2 GIVN Cindy
+2|GIVN|N|Cindy|
+2 SURN Beckert
+2|SURN|Y|Beckert|
+2 _MARNM Heinzey
+2|_MARNM|N|Heinzey|
+1 SEX F
+1|SEX|Y|F|
+1 BIRT
+1|BIRT|N|
+2 DATE 5 MAR 1970
+2|DATE|Y|5 MAR 1970|
+1 FAMS @F5@
+1|FAMS|Y|@F5@|
+1 FAMS @F6@
+1|FAMS|Y|@F6@|
+1 FAMC @F2@
+1|FAMC|Y|@F2@|
+0 @I12@ INDI
+0|@I12@|N|INDI|
+1 NAME John /Henzy/
+1|NAME|Y|John /Henzy/|
+2 GIVN John
+2|GIVN|N|John|
+2 SURN Henzy
+2|SURN|Y|Henzy|
+2 _MARNM Henzy
+2|_MARNM|N|Henzy|
+1 SEX M
+1|SEX|Y|M|
+1 BIRT
+1|BIRT|N|
+2 DATE 7 APR 1957
+2|DATE|Y|7 APR 1957|
+1 FAMS @F6@
+1|FAMS|Y|@F6@|
+0 @I13@ INDI
+0|@I13@|N|INDI|
+1 NAME Mammon /Mchphee/
+1|NAME|Y|Mammon /Mchphee/|
+2 GIVN Mammon
+2|GIVN|N|Mammon|
+2 SURN Mchphee
+2|SURN|Y|Mchphee|
+2 _MARNM Mchphee
+2|_MARNM|N|Mchphee|
+1 SEX M
+1|SEX|Y|M|
+1 BIRT
+1|BIRT|N|
+2 DATE 5 MAR 1666
+2|DATE|Y|5 MAR 1666|
+1 FAMS @F5@
+1|FAMS|Y|@F5@|
+0 @I14@ INDI
+0|@I14@|N|INDI|
+1 NAME Lucifer /Mchphee/
+1|NAME|Y|Lucifer /Mchphee/|
+2 GIVN Lucifer
+2|GIVN|N|Lucifer|
+2 SURN Mchphee
+2|SURN|Y|Mchphee|
+2 _MARNM Mchphee
+2|_MARNM|N|Mchphee|
+1 SEX M
+1|SEX|Y|M|
+1 BIRT
+1|BIRT|N|
+2 DATE 5 MAR 1996
+2|DATE|Y|5 MAR 1996|
+1 FAMC @F5@
+1|FAMC|Y|@F5@|
+0 @I15@ INDI
+0|@I15@|N|INDI|
+1 NAME Lauren /Henzy/
+1|NAME|Y|Lauren /Henzy/|
+2 GIVN Lauren
+2|GIVN|N|Lauren|
+2 SURN Henzy
+2|SURN|Y|Henzy|
+2 _MARNM Henzy
+2|_MARNM|N|Henzy|
+1 SEX F
+1|SEX|Y|F|
+1 BIRT
+1|BIRT|N|
+2 DATE 11 JAN 1998
+2|DATE|Y|11 JAN 1998|
+1 FAMC @F6@
+1|FAMC|Y|@F6@|
+0 @I16@ INDI
+0|@I16@|N|INDI|
+1 NAME John /Henzy/
+1|NAME|Y|John /Henzy/|
+2 GIVN John
+2|GIVN|N|John|
+2 SURN Henzy
+2|SURN|Y|Henzy|
+2 _MARNM Henzy
+2|_MARNM|N|Henzy|
+1 SEX M
+1|SEX|Y|M|
+1 BIRT
+1|BIRT|N|
+2 DATE 11 APR 1993
+2|DATE|Y|11 APR 1993|
+1 FAMC @F6@
+1|FAMC|Y|@F6@|
+0 @F1@ FAM
+0|@F1@|N|FAM|
+1 HUSB @I1@
+1|HUSB|Y|@I1@|
+1 WIFE @I2@
+1|WIFE|Y|@I2@|
+1 CHIL @I3@
+1|CHIL|Y|@I3@|
+1 CHIL @I4@
+1|CHIL|Y|@I4@|
+1 CHIL @I5@
+1|CHIL|Y|@I5@|
+1 _CURRENT Y
+1|_CURRENT|N|Y|
+0 @F3@ FAM
+0|@F3@|N|FAM|
+1 WIFE @I2@
+1|WIFE|Y|@I2@|
+1 _CURRENT N
+1|_CURRENT|N|N|
+0 @F2@ FAM
+0|@F2@|N|FAM|
+1 HUSB @I6@
+1|HUSB|Y|@I6@|
+1 WIFE @I7@
+1|WIFE|Y|@I7@|
+1 CHIL @I1@
+1|CHIL|Y|@I1@|
+1 CHIL @I11@
+1|CHIL|Y|@I11@|
+1 _CURRENT Y
+1|_CURRENT|N|Y|
+0 @F4@ FAM
+0|@F4@|N|FAM|
+1 HUSB @I8@
+1|HUSB|Y|@I8@|
+1 WIFE @I9@
+1|WIFE|Y|@I9@|
+1 CHIL @I2@
+1|CHIL|Y|@I2@|
+1 CHIL @I10@
+1|CHIL|Y|@I10@|
+1 _CURRENT Y
+1|_CURRENT|N|Y|
+0 @F5@ FAM
+0|@F5@|N|FAM|
+1 HUSB @I13@
+1|HUSB|Y|@I13@|
+1 WIFE @I11@
+1|WIFE|Y|@I11@|
+1 CHIL @I14@
+1|CHIL|Y|@I14@|
+1 _CURRENT Y
+1|_CURRENT|N|Y|
+0 @F6@ FAM
+0|@F6@|N|FAM|
+1 HUSB @I12@
+1|HUSB|Y|@I12@|
+1 WIFE @I11@
+1|WIFE|Y|@I11@|
+1 CHIL @I15@
+1|CHIL|Y|@I15@|
+1 CHIL @I16@
+1|CHIL|Y|@I16@|
+1 _CURRENT N
+1|_CURRENT|N|N|
+0 TRLR
+0|TRLR|N|

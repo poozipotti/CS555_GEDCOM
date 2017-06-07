@@ -1,0 +1,40 @@
+#include "../include/GEDReader.hh"
+
+
+GEDReader::GEDReader (char* fileName){
+	cout<< "tried to load " << fileName << endl;
+		
+};
+
+void GEDReader::parseFile (){
+	string line;
+	vector<string> parsedLine;
+	ifstream inputFile ("MyFamily.ged");		
+	ofstream outputFile;
+	outputFile.open("Output.txt");
+	if(inputFile.is_open()){
+		while(getline (inputFile,line)){
+			cout << " tried to read line" << endl;
+			parsedLine = parseLine(line);	
+		}
+		cout << "finished parsing lines" << endl;
+	}else{
+		cout << "error opening file" << endl;
+	}
+	outputFile.close();	
+}
+vector<string> GEDReader::parseLine(string line){
+	int maxTokens = 3;
+	vector<string> output;	
+	for (int i = 0; i < maxTokens; i++){
+		line = line.substr(0, line.find(' '));
+		cout << output.back() << endl;
+	}
+}
+
+main(){
+	GEDReader AReader("MyFamily.ged");
+	AReader.parseFile();
+	return 0;
+	
+};
