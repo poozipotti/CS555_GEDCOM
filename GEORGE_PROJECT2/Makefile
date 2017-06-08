@@ -4,7 +4,7 @@ IRDIR = ../include
 CFLAGS =  -I$(IRDIR)
 all: 
 	clear
-	g++ $(SRC) -o $(NAME) $(CFLAGS)
+	g++  -std=c++11 $(SRC) -o $(NAME) $(CFLAGS)
 clean:
 	rm -f *.o
 fclean:
