@@ -29,9 +29,11 @@ void GEDReader::parseFile (){
 	string line;
 	vector<string> * parsedLine;
 	ifstream inputFile ("MyFamily.ged");		
-	ofstream outputFile;
-	outputFile.open("Output.txt");
 	if(inputFile.is_open()){
+		//this will keep track of whether the GED Reader is parsing an individual
+		bool parsingIndividual = false;
+		//this will keep track of whether the GED Reader is parsing a family
+		bool parsingFamily = false;
 		while(getline (inputFile,line)){
 			parsedLine = parseLine(line);	
 			//will skip lines that do not start with an ID
@@ -42,38 +44,41 @@ void GEDReader::parseFile (){
 					while((*parsedLine)[1][i++] != '@'){
 						ID += (*parsedLine)[1][i-1];
 					}
+					parsingIndividual = true;
+					parsingFamily = false;
 					Individuals.push_back(new Person);
 					Individuals.back()->ID =stoi(ID);
-					getline(inputFile,line);
-					parsedLine = parseLine(line);
-					Individuals.back()->Name = (*parsedLine)[2];
-					outputFile<<" I" << Individuals.back()->ID << " | " << Individuals.back()->Name << endl;
-					cout<<" I" << Individuals.back()->ID << " | " << Individuals.back()->Name << endl;
 				}else if((*parsedLine)[1][1] == 'F'){
-			//TODO get families working
-					/*
 					int i = 2;
 					string ID = "";
 					while((*parsedLine)[1][i++] != '@'){
 						ID += (*parsedLine)[1][i-1];
 					}
-					
+					parsingIndividual = false;
+					parsingFamily = true;
 					Families.push_back(new Family);
-					Families.back()->ID = stoi(ID);
-					getline(inputFile,line);
-					parsedLine = parseLine(line);
-					ID = "";
-					i=2
-					while((*parsedLine)[1][i++] != '@'){
-						ID += (*parsedLine)[1][i-1];
-					}
-					getline(inputFile,line);
-					parsedLine = parseLine(line);
-					Individuals.back()->Name = (*parsedLine)[2];
-				*/	
-					
+					Families.back()->ID =stoi(ID);
 				}
-			};
+			}else if(parsingIndividual){
+				Individuals.back()->tags.push_back(parsedLine);
+			}else if(parsingFamily){
+				//TODO find out what the _current tag is and implement it
+				if((*parsedLine).size() >2 && (*parsedLine)[2][0] == '@'){
+				    //    cout << (*parsedLine)[2]  <<endl;	
+					string ID = "";
+					int i = 2;
+					while((*parsedLine)[2][i++] != '@'){
+						ID += (*parsedLine)[2][i-1];
+					}
+					if((*parsedLine)[1] == "HUSB"){
+						Families.back()->husbandIds.push_back(stoi(ID));
+					}else if((*parsedLine)[1] == "WIFE"){
+						Families.back()->wifeIds.push_back(stoi(ID));
+					}else if((*parsedLine)[1] == "CHIL"){
+						Families.back()->childIds.push_back(stoi(ID));
+					}
+				}
+			}
 		}
 		/*
 		for(int i = 0; i < Families.size(); i++){
@@ -87,6 +92,17 @@ void GEDReader::parseFile (){
 		cout << "finished parsing lines" << endl;
 	}else{
 		cout << "error opening file" << endl;
+	}
+}
+bool GEDReader::outputToFile(){
+	ofstream outputFile;
+	outputFile.open("Output.txt");
+	for(int i =0; i<Individuals.size(); i++){
+		outputFile << Individuals[i]->toString()+"\n\n";
+
+	}
+	for(int i =0; i<Families.size(); i++){
+		outputFile << Families[i]->toString()+"\n\n";
 	}
 	outputFile.close();	
 }
@@ -112,6 +128,7 @@ vector<string>  * GEDReader::parseLine(string line){
 main(){
 	GEDReader AReader("MyFamily.ged");
 	AReader.parseFile();
+	AReader.outputToFile();
 	return 0;
 	
 };
