@@ -71,8 +71,8 @@ class GEDReader{
 		//vector of all the individuals in a family
 		vector<Person * > Individuals;
 		vector<Family *> Families;
-		bool checkValidBirthBeforeDeath(Person *);		
 	public:
+		bool checkValidBirthBeforeDeath(Person *);		
 		GEDReader (char* fileName);	
 		bool outputToFile();
 		void parseFile();

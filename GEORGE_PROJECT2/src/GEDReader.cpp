@@ -124,11 +124,3 @@ vector<string>  * GEDReader::parseLine(string line){
 	//cout << output->back() << endl;
 	return output;
 }
-
-main(){
-	GEDReader AReader("MyFamily.ged");
-	AReader.parseFile();
-	AReader.outputToFile();
-	return 0;
-	
-};
