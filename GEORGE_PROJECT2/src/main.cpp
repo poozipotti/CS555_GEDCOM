@@ -1,5 +1,5 @@
 #include "../include/GEDReader.hh"
-#include "../include/tests.hh"
+#include "../include/DateTest.hh"
 
 main(){
 	cout<< "starting tests" << endl;

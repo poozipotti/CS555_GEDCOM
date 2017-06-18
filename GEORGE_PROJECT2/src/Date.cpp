@@ -22,15 +22,14 @@ void Date::setMonth(string _month){
 }
 void Date::setMonthDay(int _day){
 	if(_day < 0 || _day > 31){
-		cerr << _day <<  " is invalid day out of bounds!!" << endl;
+		throw  "invalid day out of bounds!!";
 	}else{	
 		monthDay = _day;
 	}
 }
 void Date::setYear(int _year){
 	if(_year < 0){
-		cerr << _year<<  " is invalid year out of bounds!!" << endl;
-		return;
+		throw  "is invalid year out of bounds!!";
 	}else{
 		year = _year;
 	}
@@ -53,9 +52,14 @@ Date::Date(string _month, int _day, int _year){
 };
 
 void Date::setFromTag(vector<string> * tag){
-	//TODO implment this
-	setMonthDay(0);	
-	setMonth(0);	
-	setYear(0);	
+	if((* tag)[1] != "DATE"){
+		throw "must be given a DATE tag!";
+	}
+	string dateString = (*tag)[2];
+	setMonthDay(stoi(dateString.substr(0,dateString.find(' '))));	
+	dateString = dateString.substr(dateString.find(" ")+1,dateString.size()-1);	
+	setMonth(dateString.substr(0,dateString.find(" ")));	
+	dateString = dateString.substr(dateString.find(" ")+1,dateString.size()-1);	
+	setYear(stoi(dateString.substr(0,dateString.find(" "))));
 }
 

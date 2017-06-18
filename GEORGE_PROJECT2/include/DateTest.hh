@@ -1,5 +1,5 @@
-#ifndef _TESTS_H_
-#define _TESTS_H_
+#ifndef _DATETEST_H_
+#define _DATETEST_H_
 
 #include "GEDReader.hh" 
 #include <cppunit/TestCase.h>

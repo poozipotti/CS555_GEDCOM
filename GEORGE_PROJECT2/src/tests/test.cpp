@@ -1,4 +1,4 @@
-#include "../../include/tests.hh"
+#include "../../include/DateTest.hh"
 
 
 void DateTest::setUp(){
@@ -21,8 +21,12 @@ void DateTest::testDateValid(){
 	validTag->push_back("DATE");
 	validTag->push_back("25 MAY 1959");
 
-	Date * compareDate = new Date(12,5,1959);		
-	testDate->setFromTag(validTag);
+	Date * compareDate = new Date(5,25,1959);		
+	try{
+		testDate->setFromTag(validTag);
+	}catch(const char* message){
+		cout<< message << endl;
+	}	
 	CPPUNIT_ASSERT_MESSAGE("date not parsed from tag correctly",(*compareDate) == (*testDate));
 }
 void DateTest::testDateInvalidSyntax(){
@@ -32,12 +36,7 @@ void DateTest::testDateInvalidSyntax(){
 	invalidTagSyntax->push_back("x");
 	invalidTagSyntax->push_back("BLAH");
 	invalidTagSyntax->push_back("25 MAY 1959");
-	try{
-		testDate->setFromTag(invalidTagSyntax);	
-	}catch(const char* message){
-		CPPUNIT_ASSERT(true);	
-	}
-	CPPUNIT_FAIL("invalid syntax was accepted");
+	CPPUNIT_ASSERT_THROW(testDate->setFromTag(invalidTagSyntax),char*);	
 }
 void DateTest::testDateDayTooHigh(){
 	//checking that the upper bounds of the days are valid
@@ -45,26 +44,16 @@ void DateTest::testDateDayTooHigh(){
 
 	invalidTagDayTooHigh->push_back("2");
 	invalidTagDayTooHigh->push_back("DATE");
-	invalidTagDayTooHigh->push_back("25 MAY 1959");
-	try{
-		testDate->setFromTag(invalidTagDayTooHigh);	
-	}catch(const char* message){
-		CPPUNIT_ASSERT(true);	
-	}
-	CPPUNIT_FAIL("accepted day past upper bound");
+	invalidTagDayTooHigh->push_back("100 MAY 1959");
+	CPPUNIT_ASSERT_THROW(testDate->setFromTag(invalidTagDayTooHigh),char*);
 }
 void DateTest::testDateDayTooLow(){
 	vector<string> *  invalidTagDayTooLow = new vector<string>;
 
 	invalidTagDayTooLow->push_back("2");
 	invalidTagDayTooLow->push_back("DATE");
-	invalidTagDayTooLow->push_back("25 MAY 1959");
-	try{
-		testDate->setFromTag(invalidTagDayTooLow);	
-	}catch(const char* message){
-		CPPUNIT_ASSERT(true);	
-	}
-	CPPUNIT_FAIL("accepted day lower than lower bound");
+	invalidTagDayTooLow->push_back("-2 MAY 1959");
+	CPPUNIT_ASSERT_THROW(testDate->setFromTag(invalidTagDayTooLow),char*);
 }
 void DateTest::testDateInvalidMonth(){
 	//checking to see if months are correctly changed
@@ -72,13 +61,8 @@ void DateTest::testDateInvalidMonth(){
 
 	invalidTagNotARealMonth->push_back("2");
 	invalidTagNotARealMonth->push_back("DATE");
-	invalidTagNotARealMonth->push_back("25 MAY 1959");
-	try{
-		testDate->setFromTag(invalidTagNotARealMonth);	
-	}catch(const char* message){
-		CPPUNIT_ASSERT(true);	
-	}
-	CPPUNIT_FAIL("accepted month that does not exist");
+	invalidTagNotARealMonth->push_back("25 POOP 1959");
+	CPPUNIT_ASSERT_THROW(testDate->setFromTag(invalidTagNotARealMonth),char*);
 }
 void DateTest::testDateInvalidYear(){
 	//checking to see that years are valid
@@ -86,13 +70,8 @@ void DateTest::testDateInvalidYear(){
 
 	invalidTagYearLessThanZero->push_back("2");
 	invalidTagYearLessThanZero->push_back("DATE");
-	invalidTagYearLessThanZero->push_back("25 MAY 1959");
-	try{
-		testDate->setFromTag(invalidTagYearLessThanZero);	
-	}catch(const char* message){
-		CPPUNIT_ASSERT(true);	
-	}
-	CPPUNIT_FAIL("accepted year that is below 0");
+	invalidTagYearLessThanZero->push_back("25 MAY -20");
+	CPPUNIT_ASSERT_THROW(testDate->setFromTag(invalidTagYearLessThanZero),char*);
 }
 
 
