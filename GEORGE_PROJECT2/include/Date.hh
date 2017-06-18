@@ -37,6 +37,36 @@ class Date{
 		bool operator==(const Date& d){
 			return (month == d.month && monthDay == d.monthDay && d.year == year);
 		}
+		bool operator<(const Date& d){
+			if(year < d.year){
+				return true;
+			}else if(year > d.year){
+				return false;
+			}else if(month < d.month){
+				return true;
+			}else if(month > d.month){
+				return false;
+			}else if(monthDay < d.monthDay){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		bool operator>(const Date& d){
+			if(year > d.year){
+				return true;
+			}else if(year < d.year){
+				return false;
+			}else if(month > d.month){
+				return true;
+			}else if(month < d.month){
+				return false;
+			}else if(monthDay > d.monthDay){
+				return true;
+			}else{
+				return false;
+			}
+		}
 		void setMonth(int);	
 		void setMonth(string);
 		void setMonthDay(int);	

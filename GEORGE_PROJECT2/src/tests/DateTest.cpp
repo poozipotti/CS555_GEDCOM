@@ -5,14 +5,35 @@ void DateTest::setUp(){
 	testDate = new Date();	
 	testDateTwo = new Date(10,12,2017);	
 	testDateThree = new Date(10,12,2017);	
+	testDateFour =new Date(10,12,2016);
 }
+
 void DateTest::tearDown(){
-	delete testDate, testDateTwo,testDateThree;
+	delete testDate, testDateTwo,testDateThree,testDateFour;
 }
   //test to make sure that the tags are converted to 
 void DateTest::testEquality(){
 	CPPUNIT_ASSERT((*testDateTwo) == (*testDateThree));
 }
+void DateTest::testLessThan(){
+	CPPUNIT_ASSERT((*testDateFour) < (*testDateTwo));
+	testDateFour->setMonth(9);
+	testDateFour->setYear(2017);
+	CPPUNIT_ASSERT((*testDateFour) < (*testDateTwo));
+	testDateFour->setMonth(10);
+	testDateFour->setMonthDay(11);
+	CPPUNIT_ASSERT((*testDateFour) < (*testDateTwo));
+}
+void DateTest::testGreaterThan(){
+	CPPUNIT_ASSERT((*testDateTwo) > (*testDateFour));
+	testDateFour->setMonth(9);
+	testDateFour->setYear(2017);
+	CPPUNIT_ASSERT((*testDateTwo) > (*testDateFour));
+	testDateFour->setMonth(10);
+	testDateFour->setMonthDay(11);
+	CPPUNIT_ASSERT((*testDateTwo) > (*testDateFour));
+}
+
 void DateTest::testDateValid(){
 	//a valid date tag
 	vector<string> * validTag = new vector<string>;
