@@ -1,12 +1,10 @@
 NAME = GEDReader
-SRC = src/GEDReader.cpp src/birthBeforeDeath.cpp
-TEST_SRC =  $(wildcard src/tests/*.cpp) 
+SRC = src/GEDReader.cpp src/birthBeforeDeath.cpp src/Date.cpp src/main.cpp src/tests/test.cpp
 IRDIR = ../include
 CFLAGS =  -I$(IRDIR)
 all: 
 	clear
-	g++  -std=c++11 $(SRC) src/main.cpp -o $(NAME) $(CFLAGS)
-	g++  -std=c++11 $(SRC) $(TEST_SRC) -o $(NAME)_tests $(CFLAGS) -lcppunit
+	g++  -std=c++11 $(SRC) -o $(NAME) $(CFLAGS) -lcppunit
 	
 clean:
 	rm -f *.o

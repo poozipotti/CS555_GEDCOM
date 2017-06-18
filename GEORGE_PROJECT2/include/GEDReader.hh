@@ -3,8 +3,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <vector>
-#include <string>
+#include "Date.hh"
 
 using namespace std;
 //1this struct will hold an indviduals data, or a husband or wive's
@@ -77,6 +76,7 @@ class GEDReader{
 		bool outputToFile();
 		void parseFile();
 		vector<string> * parseLine(string);
+		Date * convertToDate(vector<string> tag);
 };
 #endif
 

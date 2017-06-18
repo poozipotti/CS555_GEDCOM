@@ -94,8 +94,7 @@ void GEDReader::parseFile (){
 		cout << "error opening file" << endl;
 	}
 }
-bool GEDReader::outputToFile(){
-	ofstream outputFile;
+bool GEDReader::outputToFile(){ ofstream outputFile;
 	outputFile.open("Output.txt");
 	for(int i =0; i<Individuals.size(); i++){
 		outputFile << Individuals[i]->toString()+"\n\n";
