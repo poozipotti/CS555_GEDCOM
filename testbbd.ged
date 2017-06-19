@@ -1,0 +1,206 @@
+0 NOTE George Beckert
+1 NOTE i pledge my honor i have abided by the stevens honor system
+0 HEAD
+1 SOUR Family Echo
+2 WWW http://www.familyecho.com/
+1 FILE My Family
+1 DATE 24 MAY 2017
+1 DEST ANSTFILE
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 SUBM @I3@
+2 NAME George 
+1 SUBN
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Doug /Beckert/
+2 GIVN Doug
+2 SURN Beckert
+2 _MARNM Beckert
+1 SEX M
+1 BIRT
+2 DATE 25 MAY 1959
+1 DEAT Y
+2 DATE 7 FEB 1900
+1 FAMS @F1@
+1 FAMC @F2@
+0 @I2@ INDI
+1 NAME Anne /Dyck/
+2 GIVN Anne
+2 SURN Dyck
+2 _MARNM Beckert
+1 SEX F
+1 BIRT
+2 DATE 20 SEP 0161
+1 DEAT Y
+2 DATE 7 FEB 2017
+1 FAMS @F1@
+1 FAMS @F3@
+1 FAMC @F4@
+0 @I3@ INDI
+1 NAME George Beckert /Beckert/
+2 GIVN George Beckert
+2 SURN Beckert
+2 _MARNM Beckert
+1 SEX M
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Charity /Beckert/
+2 GIVN Charity
+2 SURN Beckert
+2 _MARNM Beckert
+1 SEX F
+1 BIRT
+2 DATE 7 JAN 1994
+1 FAMC @F1@
+0 @I5@ INDI
+1 NAME Max /Beckert/
+2 GIVN Max
+2 SURN Beckert
+2 _MARNM Beckert
+1 SEX M
+1 BIRT
+2 DATE 30 DEC 2004
+1 FAMC @F1@
+0 @I6@ INDI
+1 NAME George /Beckert/
+2 GIVN George
+2 SURN Beckert
+2 _MARNM Beckert
+1 SEX M
+1 BIRT
+2 DATE 5 APR 1926
+1 DEAT Y
+2 DATE 4 FEB 2000
+1 FAMS @F2@
+0 @I7@ INDI
+1 NAME Maragaret /Beckert/
+2 GIVN Maragaret
+2 SURN Beckert
+2 _MARNM Beckert
+1 SEX F
+1 BIRT
+2 DATE 3 MAR 1929
+1 DEAT Y
+2 DATE 7 FEB 2014
+1 FAMS @F2@
+0 @I8@ INDI
+1 NAME Norman /Dyck/
+2 GIVN Norman
+2 SURN Dyck
+2 _MARNM Dyck
+1 SEX M
+1 BIRT
+2 DATE 7 APR 1927
+1 DEAT Y
+2 DATE 4 MAY 2015
+1 FAMS @F4@
+0 @I9@ INDI
+1 NAME Dorthy /Hostetler/
+2 GIVN Dorthy
+2 SURN Hostetler
+2 _MARNM Dyck
+1 SEX F
+1 BIRT
+2 DATE 28 MAR 1928
+1 FAMS @F4@
+0 @I10@ INDI
+1 NAME Paul Dyck /Dyck/
+2 GIVN Paul Dyck
+2 SURN Dyck
+2 _MARNM Dyck
+1 SEX M
+1 BIRT
+2 DATE 13 OCT 1958
+1 FAMC @F4@
+0 @I11@ INDI
+1 NAME Cindy /Beckert/
+2 GIVN Cindy
+2 SURN Beckert
+2 _MARNM Heinzey
+1 SEX F
+1 BIRT
+2 DATE 5 MAR 1970
+1 FAMS @F5@
+1 FAMS @F6@
+1 FAMC @F2@
+0 @I12@ INDI
+1 NAME John /Henzy/
+2 GIVN John
+2 SURN Henzy
+2 _MARNM Henzy
+1 SEX M
+1 BIRT
+2 DATE 7 APR 1957
+1 FAMS @F6@
+0 @I13@ INDI
+1 NAME Mammon /Mchphee/
+2 GIVN Mammon
+2 SURN Mchphee
+2 _MARNM Mchphee
+1 SEX M
+1 BIRT
+2 DATE 5 MAR 1666
+1 FAMS @F5@
+0 @I14@ INDI
+1 NAME Lucifer /Mchphee/
+2 GIVN Lucifer
+2 SURN Mchphee
+2 _MARNM Mchphee
+1 SEX M
+1 BIRT
+2 DATE 5 MAR 1996
+1 FAMC @F5@
+0 @I15@ INDI
+1 NAME Lauren /Henzy/
+2 GIVN Lauren
+2 SURN Henzy
+2 _MARNM Henzy
+1 SEX F
+1 BIRT
+2 DATE 11 JAN 1998
+1 FAMC @F6@
+0 @I16@ INDI
+1 NAME John /Henzy/
+2 GIVN John
+2 SURN Henzy
+2 _MARNM Henzy
+1 SEX M
+1 BIRT
+2 DATE 11 APR 1993
+1 FAMC @F6@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 CHIL @I4@
+1 CHIL @I5@
+1 _CURRENT Y
+0 @F3@ FAM
+1 WIFE @I2@
+1 _CURRENT N
+0 @F2@ FAM
+1 HUSB @I6@
+1 WIFE @I7@
+1 CHIL @I1@
+1 CHIL @I11@
+1 _CURRENT Y
+0 @F4@ FAM
+1 HUSB @I8@
+1 WIFE @I9@
+1 CHIL @I2@
+1 CHIL @I10@
+1 _CURRENT Y
+0 @F5@ FAM
+1 HUSB @I13@
+1 WIFE @I11@
+1 CHIL @I14@
+1 _CURRENT Y
+0 @F6@ FAM
+1 HUSB @I12@
+1 WIFE @I11@
+1 CHIL @I15@
+1 CHIL @I16@
+1 _CURRENT N
+0 TRLR
