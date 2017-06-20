@@ -12,7 +12,7 @@ void BirthBeforeDeathTest::tearDown(){
 }
 void BirthBeforeDeathTest::testBirthAfterDeath(){
 	CPPUNIT_ASSERT_MESSAGE("individual who had a birth after a death was not caught",!(testReader->checkValidBirthBeforeDeath(testReader->Individuals[0])));
-		
+
 }
 void BirthBeforeDeathTest::testBirthBeforeDeath(){
 	CPPUNIT_ASSERT_MESSAGE("person with birth before death was declared incalid",(testReader->checkValidBirthBeforeDeath(testReader->Individuals[1])));

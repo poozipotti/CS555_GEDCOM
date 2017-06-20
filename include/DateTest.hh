@@ -1,7 +1,7 @@
 #ifndef _DATETEST_H_
 #define _DATETEST_H_
 
-#include "GEDReader.hh" 
+#include "GEDReader.hh"
 #include <cppunit/TestCase.h>
 #include <cppunit/TestFixture.h>
 #include <cppunit/ui/text/TestRunner.h>
@@ -18,15 +18,15 @@ using namespace CppUnit;
 class DateTest : public CppUnit::TestFixture {
 	private:
 		Date * testDate;
-		Date * testDateTwo; 
+		Date * testDateTwo;
 		Date * testDateThree;
 		Date * testDateFour;
 	public:
 		void setUp();
 
 
-		void tearDown(); 
-		//test to make sure that the tags are converted to 
+		void tearDown();
+		//test to make sure that the tags are converted to
 		void testEquality();
 		void testLessThan();
 		void testGreaterThan();

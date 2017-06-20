@@ -9,20 +9,23 @@ using namespace std;
 //1this struct will hold an indviduals data, or a husband or wive's
 struct Person{
 	int ID;
-	vector< vector<string> * >   tags;		
+	vector< vector<string> * >   tags;
+    bool checkIfDead();
+    Date * getBirthdate();
+    Date * getDeathdate();
 	string toString(){
 		string outputString = "";
 		outputString += to_string(ID) + ": \n{ \n";
 		for(int i= 0; i<tags.size(); i++){
-			outputString += "\t";	
+			outputString += "\t";
 			for(int j=0; j< tags[i]->size() ; j++){
-				outputString += "" + (*tags[i])[j] + " | ";	
+				outputString += "" + (*tags[i])[j] + " | ";
 			}
 			outputString += "\n";
 		}
 		outputString+= "}";
 		return outputString;
-		
+
 
 	}
 };
@@ -36,30 +39,30 @@ struct Family{
 
 		outputString += to_string(ID) + ":\n husband Ids: \n{ \n";
 		for(int i= 0; i<husbandIds.size(); i++){
-			outputString += "\t";	
-			outputString += to_string(husbandIds[i]);	
+			outputString += "\t";
+			outputString += to_string(husbandIds[i]);
 			outputString += "\n";
 		}
 		outputString+= "}";
 
 		outputString += "\n wife Ids: \n{ \n";
 		for(int i= 0; i<wifeIds.size(); i++){
-			outputString += "\t";	
-			outputString += to_string(wifeIds[i]);	
+			outputString += "\t";
+			outputString += to_string(wifeIds[i]);
 			outputString += "\n";
 		}
 		outputString+= "}";
 
 		outputString += "\n chld Ids: \n{\n";
 		for(int i= 0; i<childIds.size(); i++){
-			outputString += "\t";	
-			outputString += to_string(childIds[i]);	
+			outputString += "\t";
+			outputString += to_string(childIds[i]);
 			outputString += "\n";
 		}
 		outputString+= "}";
 
 		return outputString;
-		
+
 
 	}
 };
@@ -71,8 +74,8 @@ class GEDReader{
 		vector<Family *> Families;
 	public:
 		vector<Person * > Individuals;
-		bool checkValidBirthBeforeDeath(Person *);		
-		GEDReader (char* _fileName);	
+		bool checkValidBirthBeforeDeath(Person *);
+		GEDReader (char* _fileName);
 		char * fileName;
 		bool outputToFile();
 		void parseFile();

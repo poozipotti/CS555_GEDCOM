@@ -1,5 +1,5 @@
 NAME = GEDReader
-SRC = src/GEDReader.cpp src/birthBeforeDeath.cpp src/Date.cpp src/main.cpp src/tests/DateTest.cpp src/tests/BirthBeforeDeathTest.cpp
+SRC = src/GEDReader.cpp src/birthBeforeDeath.cpp src/Date.cpp src/main.cpp src/tests/DateTest.cpp src/tests/BirthBeforeDeathTest.cpp src/checkIfDead.cpp src/tests/isDeadTest.cpp
 IRDIR = ../include
 CFLAGS =  -I$(IRDIR)
 all: 

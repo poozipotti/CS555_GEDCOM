@@ -2,16 +2,16 @@
 
 
 void DateTest::setUp(){
-	testDate = new Date();	
-	testDateTwo = new Date(10,12,2017);	
-	testDateThree = new Date(10,12,2017);	
+	testDate = new Date();
+	testDateTwo = new Date(10,12,2017);
+	testDateThree = new Date(10,12,2017);
 	testDateFour =new Date(10,12,2016);
 }
 
 void DateTest::tearDown(){
 	delete testDate, testDateTwo,testDateThree,testDateFour;
 }
-  //test to make sure that the tags are converted to 
+  //test to make sure that the tags are converted to
 void DateTest::testEquality(){
 	CPPUNIT_ASSERT((*testDateTwo) == (*testDateThree));
 }
@@ -42,12 +42,12 @@ void DateTest::testDateValid(){
 	validTag->push_back("DATE");
 	validTag->push_back("25 MAY 1959");
 
-	Date * compareDate = new Date(5,25,1959);		
+	Date * compareDate = new Date(5,25,1959);
 	try{
 		testDate->setFromTag(validTag);
 	}catch(const char* message){
 		cout<< message << endl;
-	}	
+	}
 	CPPUNIT_ASSERT_MESSAGE("date not parsed from tag correctly",(*compareDate) == (*testDate));
 }
 void DateTest::testDateInvalidSyntax(){
@@ -57,7 +57,7 @@ void DateTest::testDateInvalidSyntax(){
 	invalidTagSyntax->push_back("x");
 	invalidTagSyntax->push_back("BLAH");
 	invalidTagSyntax->push_back("25 MAY 1959");
-	CPPUNIT_ASSERT_THROW(testDate->setFromTag(invalidTagSyntax),char*);	
+	CPPUNIT_ASSERT_THROW(testDate->setFromTag(invalidTagSyntax),char*);
 }
 void DateTest::testDateDayTooHigh(){
 	//checking that the upper bounds of the days are valid
