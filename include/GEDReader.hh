@@ -7,7 +7,7 @@
 
 using namespace std;
 //1this struct will hold an indviduals data, or a husband or wive's
-struct Person{
+struct Individual{
 	int ID;
 	vector< vector<string> * >   tags;
     bool checkIfDead();
@@ -73,12 +73,16 @@ class GEDReader{
 		//vector of all the individuals in a family
 		vector<Family *> Families;
 	public:
-		vector<Person * > Individuals;
-		bool checkValidBirthBeforeDeath(Person *);
+		vector<Individual * > Individuals;
+		bool checkValidBirthBeforeDeath(Individual *);
 		GEDReader (char* _fileName);
 		char * fileName;
 		bool outputToFile();
 		void parseFile();
+        void addNewIndividual(int ID);
+        void addNewFamily(int ID);
+        void addTagToIndividual(int ID, vector<string> * tag);
+        void addMemberToFamily(int ID, vector<string> * tag);
 		vector<string> * parseLine(string);
 		Date * convertToDate(vector<string> tag);
 };

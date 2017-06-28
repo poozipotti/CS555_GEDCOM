@@ -19,12 +19,12 @@ class  IsDeadTest: public CppUnit::TestFixture {
 	public:
 		void setUp();
 		void tearDown();
-		void testDeadPerson();
-		void testLivingPerson();
+		void testDeadIndividual();
+		void testLivingIndividual();
 		//test to make sure that the tags are converted to
 		CPPUNIT_TEST_SUITE(IsDeadTest);
-		CPPUNIT_TEST(testDeadPerson);
-		CPPUNIT_TEST(testLivingPerson);
+		CPPUNIT_TEST(testDeadIndividual);
+		CPPUNIT_TEST(testLivingIndividual);
 		CPPUNIT_TEST_SUITE_END();
 };
 

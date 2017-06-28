@@ -9,11 +9,11 @@ void IsDeadTest::tearDown(){
 	delete testReader;
 
 }
-void IsDeadTest::testDeadPerson(){
+void IsDeadTest::testDeadIndividual(){
 	CPPUNIT_ASSERT_MESSAGE("individual who is dead repoted alive",(testReader->Individuals[0]->checkIfDead()));
 
 }
-void IsDeadTest::testLivingPerson(){
+void IsDeadTest::testLivingIndividual(){
 	CPPUNIT_ASSERT_MESSAGE("individual who is alive without  death tag reported dead",!(testReader->Individuals[3]->checkIfDead()));
 	CPPUNIT_ASSERT_MESSAGE("individual who is alive with negative death tag reported dead",!(testReader->Individuals[4]->checkIfDead()));
 
