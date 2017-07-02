@@ -7,6 +7,26 @@ GEDData::GEDData (char* _fileName){
 	parseFile();
 
 };
+
+vector<string>  * GEDData::parseLine(string line){
+	int maxTokens = 3;
+	vector<string> * output = new vector<string>;
+	//cout << line << endl;
+	for (int i = 0; i < maxTokens-1; i++){
+		if(line.find(' ') == -1){
+			output->push_back(line);
+			//cout<< " line ended early" << endl;
+			return output;
+		}
+		output->push_back(line.substr(0, line.find(' ')));
+		line = line.substr(line.find(' ')+1, line.size()-1 );
+		//cout << ou,tput->back() << endl;
+	}
+	output->push_back(line);
+	//cout << output->back() << endl;
+	return output;
+}
+
 void GEDData::parseFile (){
 	string line;
 	vector<string> * parsedLine;

@@ -11,5 +11,9 @@ bool GEDValidityTests::checkValidBirthBeforeDeath(Individual * individual){
 	if(birth == NULL){
 		return true;
 	}
-	return ((*birth) < (*death));
+	if((*birth) < (*death)){
+        return true;
+    }
+    cerr<< "death before birth error found in Individual " << individual->ID << endl;
+    return false;
 }

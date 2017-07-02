@@ -7,7 +7,7 @@
 //TODO give the writer different options like -v for a verbose option or -s for a
 //silent option. (i'm not sure if -s is for silent i want to check on the unix junk)
 #include "GEDData.hh"
-
+#include "GEDValidityTests.hh"
 using namespace std;
 
 class GEDWriter{
@@ -15,12 +15,15 @@ class GEDWriter{
         GEDData * data;
         //remember to add all of the tests from GEDVAilidityTester into the check individuals and check families
         //if new ones are added
-        void checkIndividual();
-        void checkFamily();
+        string checkIndividual(Individual *);
+        string checkFamily(Family *);
         string tagToString(vector<string> * tag);
     public:
         GEDWriter(GEDData * _data);
-        bool writeNewFile(char* fileName, bool test);
+        bool writeNewFile(char* fileName = "GED_PARSED.ged", bool test=true);
+        bool listTheDead(char* fileName = "GED_DEAD_MEMBERS.ged");
+
+
 
 };
 
