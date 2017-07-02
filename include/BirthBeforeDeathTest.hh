@@ -1,6 +1,6 @@
 #ifndef _BIRTHBEFOREDEATHTEST_H_
 #define _BIRTHBEFOREDEATHTEST_H_
-#include "GEDReader.hh" 
+#include "../include/GEDData.hh"
 #include <cppunit/TestCase.h>
 #include <cppunit/TestFixture.h>
 #include <cppunit/ui/text/TestRunner.h>
@@ -15,15 +15,15 @@ using namespace CppUnit;
 
 class  BirthBeforeDeathTest: public CppUnit::TestFixture {
 	private:
-		GEDReader * testReader;
+		GEDData * testReader;
 	public:
 		void setUp();
-		void tearDown(); 
+		void tearDown();
 		void testBirthAfterDeath();
 		void testBirthBeforeDeath();
 		void testNoBirthDateSpecified();
 		void testNoDeathDateSpecified();
-		//test to make sure that the tags are converted to 
+		//test to make sure that the tags are converted to
 		CPPUNIT_TEST_SUITE(BirthBeforeDeathTest);
 		CPPUNIT_TEST(testBirthAfterDeath);
 		CPPUNIT_TEST(testBirthBeforeDeath);

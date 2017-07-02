@@ -3,7 +3,7 @@
 void IsDeadTest::setUp(){
 	//test bbd is a modified ged file, first person has a birth after a death, second a brith before death, thrid no brith date and fourth no deathdate
 	//there is more data left in the file, there isn't any particular reason to take it out
-	testReader = new GEDReader("testbbd.ged");
+	testReader = new GEDData("testbbd.ged");
 }
 void IsDeadTest::tearDown(){
 	delete testReader;

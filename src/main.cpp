@@ -1,4 +1,4 @@
-#include "../include/GEDReader.hh"
+#include "../include/GEDData.hh"
 #include "../include/DateTest.hh"
 #include "../include/BirthBeforeDeathTest.hh"
 #include "../include/isDeadTest.hh"
@@ -10,7 +10,7 @@ main(){
 	runner.addTest(BirthBeforeDeathTest::suite());
     runner.addTest(IsDeadTest::suite());
 	runner.run();
-	GEDReader AReader("testbbd.ged");
+	GEDData parsedFile("testbbd.ged");
 	return 0;
 
 };

@@ -1,7 +1,7 @@
 #ifndef _DATETEST_H_
 #define _DATETEST_H_
 
-#include "GEDReader.hh"
+#include "GEDData.hh"
 #include <cppunit/TestCase.h>
 #include <cppunit/TestFixture.h>
 #include <cppunit/ui/text/TestRunner.h>

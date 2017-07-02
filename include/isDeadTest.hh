@@ -1,6 +1,6 @@
 #ifndef _ISDEADTEST_H_
 #define _ISDEADTEST_H_
-#include "GEDReader.hh"
+#include "GEDData.hh"
 #include <cppunit/TestCase.h>
 #include <cppunit/TestFixture.h>
 #include <cppunit/ui/text/TestRunner.h>
@@ -15,7 +15,7 @@ using namespace CppUnit;
 
 class  IsDeadTest: public CppUnit::TestFixture {
 	private:
-		GEDReader * testReader;
+		GEDData * testReader;
 	public:
 		void setUp();
 		void tearDown();
