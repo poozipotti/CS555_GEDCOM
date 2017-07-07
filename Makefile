@@ -1,5 +1,5 @@
 NAME = GEDReader
-SRC = src/Individual.cpp src/Family.cpp src/GEDData.cpp src/GEDWriter.cpp src/birthBeforeDeath.cpp src/Date.cpp src/uniqueID.cpp src/main.cpp src/tests/DateTest.cpp src/tests/BirthBeforeDeathTest.cpp src/tests/isDeadTest.cpp src/tests/uniqueIDTest.cpp
+SRC = src/Individual.cpp src/Family.cpp src/GEDData.cpp src/GEDWriter.cpp src/birthBeforeDeath.cpp src/Date.cpp src/uniqueID.cpp src/GenderRole.cpp src/main.cpp src/tests/genderRoleTest.cpp src/tests/DateTest.cpp src/tests/BirthBeforeDeathTest.cpp src/tests/isDeadTest.cpp src/tests/uniqueIDTest.cpp
 IRDIR = ../include
 CFLAGS =  -I$(IRDIR)
 all: 

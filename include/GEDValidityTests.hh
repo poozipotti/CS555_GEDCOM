@@ -21,5 +21,7 @@ namespace GEDValidityTests{
     bool checkValidBirthBeforeDeath(Individual *);
     //outputs 2 dimensional vector of ids that are not unique, a list of individual id's at [0] and  family id's at [1]
     vector< vector<int> *> checkValidUniqueID(GEDData *);
+    bool checkFatherGender(Family *, GEDData *);
+    bool checkMotherGender(Family *, GEDData *);
 };
 #endif

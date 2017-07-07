@@ -4,6 +4,7 @@
 #include "../include/BirthBeforeDeathTest.hh"
 #include "../include/isDeadTest.hh"
 #include "../include/uniqueIDTest.hh"
+#include "../include/GenderRoleTest.hh"
 
 void displayHelp(){
     cout << "Help: \n  correct useage is GEDReader <filename> <optional tags>" << endl;
@@ -36,6 +37,7 @@ main(int argc, char * argv[]){
         runner.addTest(BirthBeforeDeathTest::suite());
         runner.addTest(IsDeadTest::suite());
         runner.addTest(UniqueIDTest::suite());
+        runner.addTest(GenderRoleTest::suite());
         runner.run();
     }
     if(argv[1] != "-t"){

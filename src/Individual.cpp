@@ -33,3 +33,16 @@ bool Individual::checkIfDead(){
         }
         return false;
 }
+bool Individual::isMale(){
+        for(int i = 0; i<tags.size() ;i++){
+            if((* tags[i])[1] == "SEX"){
+                if((* tags[i])[2].substr(0,1) == "M"){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+        cerr << "missing gender tag returning true as default value for individual: " << ID <<endl;
+        return false;
+}

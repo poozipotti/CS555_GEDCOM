@@ -10,6 +10,7 @@ struct Individual{
     bool checkIfDead();
     Date * getBirthdate();
     Date * getDeathdate();
+    bool isMale();
 	string toString(){
 		string outputString = "";
 		outputString += to_string(ID) + ": \n{ \n";
