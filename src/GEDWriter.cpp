@@ -53,8 +53,19 @@ string GEDWriter::tagToString(vector<string> * tag){
 
 
 string GEDWriter::checkIndividual(Individual * individual){
+    vector< vector<int> * > nonUniqueIDS = GEDValidityTests::checkValidUniqueID(data);
+    bool uniqueID = true;
     string output= "" ;
     output +=  "@"+ to_string(individual->ID)+"@ INDI\n";
+    for(int i =0; i< (* nonUniqueIDS[0]).size(); i++){
+        if(individual->ID == (* nonUniqueIDS[0])[i]){
+            uniqueID = false;
+            break;
+        }
+    }
+    if(!uniqueID){
+        output += "1 NOTE |||||||||||||||||INDIVIDUAL DOES NOT HAVE UNIQUE ID||||||||||||||\n";
+    }
     if(!GEDValidityTests::checkValidBirthBeforeDeath(individual)){
         output += "1 NOTE |||||||||||||||||CHECK RECORD DEATH IS BEFORE BIRTH||||||||||||||\n";
     }
