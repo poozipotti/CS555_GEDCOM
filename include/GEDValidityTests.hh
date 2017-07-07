@@ -6,6 +6,7 @@
 #include "Individual.hh"
 #include "Family.hh"
 #include "Date.hh"
+#include "GEDData.hh"
 
 namespace GEDValidityTests{
     //TODO check if this is bad form (to declare a variable in a namespace)
@@ -18,5 +19,7 @@ namespace GEDValidityTests{
     //remember to add all of the tests from GEDVAilidityTester into the check individuals and check families
     //if new ones are added
     bool checkValidBirthBeforeDeath(Individual *);
+    //outputs 2 dimensional vector of ids that are not unique, a list of individual id's at [0] and  family id's at [1]
+    vector< vector<int> *> checkValidUniqueID(GEDData *);
 };
 #endif
