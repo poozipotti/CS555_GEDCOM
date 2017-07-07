@@ -16,7 +16,7 @@ bool GEDWriter::writeNewFile(char* fileName, bool Test){
         outputFile<<checkIndividual(data->Individuals[i]);
 	}
 	for(int i =0; i<data->Families.size(); i++){
-        //TODO familes to things
+        outputFile<<checkFamily(data->Families[i]);
 	}
     outputFile << "TRLR" << endl;
 	outputFile.close();
@@ -56,7 +56,7 @@ string GEDWriter::checkIndividual(Individual * individual){
     vector< vector<int> * > nonUniqueIDS = GEDValidityTests::checkValidUniqueID(data);
     bool uniqueID = true;
     string output= "" ;
-    output +=  "@"+ to_string(individual->ID)+"@ INDI\n";
+    output +=  "@I"+ to_string(individual->ID)+"@ INDI\n";
     for(int i =0; i< (* nonUniqueIDS[0]).size(); i++){
         if(individual->ID == (* nonUniqueIDS[0])[i]){
             uniqueID = false;
@@ -74,4 +74,30 @@ string GEDWriter::checkIndividual(Individual * individual){
        output+= tagToString(individual->tags[j])+'\n';
     }
     return output;
+}
+string GEDWriter::checkFamily(Family * family){
+    vector< vector<int> * > nonUniqueIDS = GEDValidityTests::checkValidUniqueID(data);
+    bool uniqueID = true;
+    string output= "" ;
+    output +=  "@F"+ to_string(family->ID)+"@ FAM\n";
+    for(int i =0; i< (* nonUniqueIDS[1]).size(); i++){
+        if(family->ID == (* nonUniqueIDS[1])[i]){
+            uniqueID = false;
+            break;
+        }
+    }
+    if(!uniqueID){
+        output += "1 NOTE |||||||||||||||||Family DOES NOT HAVE UNIQUE ID||||||||||||||\n";
+    }
+    for(int j= 0; j< family->husbandIds.size(); j++){
+       output+= "HUSB @I" + to_string(family->husbandIds[j])+"@\n";
+    }
+    for(int j= 0; j< family->wifeIds.size(); j++){
+       output+= "WIFE @I" + to_string(family->wifeIds[j])+"@\n";
+    }
+    for(int j= 0; j< family->childIds.size(); j++){
+       output+= "CHIL @I" + to_string(family->childIds[j])+"@\n";
+    }
+    return output;
+
 }

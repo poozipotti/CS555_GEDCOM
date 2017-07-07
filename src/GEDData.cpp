@@ -65,8 +65,8 @@ void GEDData::parseFile (){
 			}else if(parsingIndividual){
                 addTagToIndividual(tempID,parsedLine);
 			}else if(parsingFamily){
-				//TODO find out what the _current tag is and implement it
                 addMemberToFamily(tempID,parsedLine);
+
             }else{
                 addTagToOpening(parsedLine);
             }
@@ -98,27 +98,29 @@ void GEDData::addTagToIndividual(int ID, vector<string> * tag){
 
     //throw("Individual was not found in individual list");
 }
+//TODO reflect that addMemberToFamily also sets _CRURRET tag
 void GEDData::addMemberToFamily(int ID, vector<string> * tag){
     for(int i =0; i<Families.size(); i++){
         if(Families[i]->ID == ID ){
-				if((*tag).size() >2 && (*tag)[2][0] == '@'){
-				    //    cout << (*parsedLine)[2]  <<endl;
-					string ID = "";
-					int i = 2;
-					while((*tag)[2][i++] != '@'){
-						ID += (*tag)[2][i-1];
-					}
-					if((*tag)[1] == "HUSB"){
-						Families.back()->husbandIds.push_back(stoi(ID));
-					}else if((*tag)[1] == "WIFE"){
-						Families.back()->wifeIds.push_back(stoi(ID));
-					}else if((*tag)[1] == "CHIL"){
-						Families.back()->childIds.push_back(stoi(ID));
+            if((*tag).size() >2){
+                if((*tag)[2][0] == '@'){
+                    string ID = "";
+                    int j = 2;
+                    while((*tag)[2][j++] != '@'){
+                        ID += (*tag)[2][j-1];
                     }
-				}
+                    if((*tag)[1] == "HUSB"){
+                        Families[i]->husbandIds.push_back(stoi(ID));
+                    }else if((*tag)[1] == "WIFE"){
+                        Families[i]->wifeIds.push_back(stoi(ID));
+                    }else if((*tag)[1] == "CHIL"){
+                        Families[i]->childIds.push_back(stoi(ID));
+                    }
+                }else if((*tag)[1] == "_CURRENT" ){
+                    Families[i]->current = ((*tag)[2] == "Y");
+                }
+            }
         }
     }
-    //throw("Family was not found in Family list");
-
 }
 

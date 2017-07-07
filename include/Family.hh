@@ -7,6 +7,7 @@ using namespace std;
 
 struct Family{
 	int ID;
+    bool current;
 	vector<int> husbandIds;
 	vector<int> wifeIds;
 	vector<int> childIds;
