@@ -89,6 +89,18 @@ string GEDWriter::checkFamily(Family * family){
     if(!uniqueID){
         output += "1 NOTE |||||||||||||||||Family DOES NOT HAVE UNIQUE ID||||||||||||||\n";
     }
+    try{
+        if(!GEDValidityTests::checkFatherGender(family , data)){
+            output += "1 NOTE |||||||||||||||||FATHER IS LISTED AS FEMALE||||||||||||||\n";
+        }
+        if(!GEDValidityTests::checkMotherGender(family , data)){
+            output += "1 NOTE |||||||||||||||||MOTHER IS LISTED AS MALE||||||||||||||\n";
+
+        }
+    }catch(char const* error){
+        cerr << "there was an error in finding a husband or wife when trying to check their gender, check for duplicate ids" << endl;
+    }
+
     for(int j= 0; j< family->husbandIds.size(); j++){
        output+= "HUSB @I" + to_string(family->husbandIds[j])+"@\n";
     }
