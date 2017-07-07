@@ -3,8 +3,18 @@
 
 //returns NULL if no birthdate is specified
 bool GEDValidityTests::checkFatherGender(Family * family, GEDData * data){
-    return true;
+    for(int i=0;i<data->Individuals.size();i++){
+        if(data->Individuals[i]->ID == family->husbandIds[0]){
+            return(data->Individuals[i]->isMale());
+        }
+    }
+    throw "could not find husband in individuals";
 }
 bool GEDValidityTests::checkMotherGender(Family * family, GEDData * data){
-    return true;
+    for(int i=0;i<data->Individuals.size();i++){
+        if(data->Individuals[i]->ID == family->wifeIds[0]){
+            return(!data->Individuals[i]->isMale());
+        }
+    }
+    throw "could not find husband in individuals";
 }

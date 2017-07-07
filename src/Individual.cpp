@@ -37,8 +37,10 @@ bool Individual::isMale(){
         for(int i = 0; i<tags.size() ;i++){
             if((* tags[i])[1] == "SEX"){
                 if((* tags[i])[2].substr(0,1) == "M"){
+                    cout <<ID << " is a male" << endl;
                     return true;
                 }else{
+                    cout <<ID << " is a female" << endl;
                     return false;
                 }
             }
