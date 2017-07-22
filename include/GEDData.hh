@@ -23,7 +23,7 @@ class GEDData{
             GEDData (char* _fileName);
             //parses an entire GED file and stores it's data
             void parseFile();
-            void addNewIndividual(int ID);
+            void addNewIndividual(vector<string> *);
             void addNewFamily(int ID);
             void addTagToOpening(vector<string> * tag);
             void addTagToIndividual(int ID, vector<string> * tag);

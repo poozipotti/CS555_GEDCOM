@@ -5,27 +5,38 @@
 #include <vector>
 
 struct Individual{
-	int ID;
-	vector< vector<string> * >   tags;
-    bool checkIfDead();
-    Date * getBirthdate();
-    Date * getDeathdate();
+    int ID;
+    string name;
+    vector< vector<string> * >   tags;
+    Date * deathdate;
+    Date * birthdate;
+    vector<int> * childIds;
+    vector<int> * spouseIds;
+
+    Individual(vector < vector<string> * > _tags);
+    Individual(vector<string> *  _tags);
+    bool isDead();
     bool isMale();
-	string toString(){
-		string outputString = "";
-		outputString += to_string(ID) + ": \n{ \n";
-		for(int i= 0; i<tags.size(); i++){
-			outputString += "\t";
-			for(int j=0; j< tags[i]->size() ; j++){
-				outputString += "" + (*tags[i])[j] + " | ";
-			}
-			outputString += "\n";
-		}
-		outputString+= "}";
-		return outputString;
+    string getNameFromTags();
+    int getIDFromTags();
+    Date * getBirthdateFromTags();
+    Date * getDeathdateFromTags();
+    vector<int> * getChildIds;
+    vector<int> * getSpouseIds;
+    void populateDataFromTags();
+    void addTag(vector<string> * );
 
+    //TODO this is obsolete
+    string toString(){
+        string outputString = "";
+        outputString += to_string(ID) + ": \n{ \n";
+        outputString += "\t " + name + "\n";
+        outputString+= "}";
+        return outputString;
+    }
+    private:
+    vector<string> * getTag(string tag);
 
-	}
 };
 
 #endif

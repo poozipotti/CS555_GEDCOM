@@ -15,17 +15,18 @@ class GEDWriter{
         GEDData * data;
         //remember to add all of the tests from GEDVAilidityTester into the check individuals and check families
         //if new ones are added
-        string checkIndividual(Individual *);
-        string checkFamily(Family *);
+        string getCheckedIndividualGED(Individual *);
+        string getCheckedFamilyGED(Family *);
         string tagToString(vector<string> * tag);
     public:
         GEDWriter(GEDData * _data);
-        bool writeNewFile(char* fileName = "GED_PARSED.ged", bool test=true);
+        bool writeNewGEDFile(char* fileName = "GED_PARSED.ged", bool test=true);
+        bool writeOutputFile(char* fileName = "Validity_Output.ged", bool test=true);
         bool listTheDead(char* fileName = "GED_DEAD_MEMBERS.ged");
+        string formatToTable(vector< vector<string> * >, vector<string> columnHeadings,int columnSize);
 
 
 
 };
 
 #endif
-

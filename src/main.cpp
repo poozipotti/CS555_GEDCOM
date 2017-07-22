@@ -43,7 +43,8 @@ main(int argc, char * argv[]){
     if(argv[1] != "-t"){
         GEDData parsedFile(argv[1]);
         GEDWriter gedwriter(&parsedFile);
-        gedwriter.writeNewFile();
+        gedwriter.writeNewGEDFile();
+        gedwriter.writeOutputFile();
         gedwriter.listTheDead();
     }
 	return 0;

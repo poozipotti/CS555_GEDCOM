@@ -4,7 +4,7 @@ GEDWriter::GEDWriter(GEDData * _data){
     data = _data;
 }
 
-bool GEDWriter::writeNewFile(char* fileName, bool Test){
+bool GEDWriter::writeNewGEDFile(char* fileName, bool Test){
     //TODO make it return a bool
     ofstream outputFile;
 	outputFile.open(string(fileName));
@@ -13,14 +13,56 @@ bool GEDWriter::writeNewFile(char* fileName, bool Test){
         outputFile<<tagToString(data->openingTags[i])<<endl;
     }
 	for(int i =0; i < data->Individuals.size(); i++){
-        outputFile<<checkIndividual(data->Individuals[i]);
+        outputFile<<getCheckedIndividualGED(data->Individuals[i]);
 	}
 	for(int i =0; i<data->Families.size(); i++){
-        outputFile<<checkFamily(data->Families[i]);
+        outputFile<<getCheckedFamilyGED(data->Families[i]);
 	}
     outputFile << "TRLR" << endl;
 	outputFile.close();
 }
+bool GEDWriter::writeOutputFile(char* fileName, bool Test){
+    //TODO make it return a bool
+    ofstream outputFile;
+	outputFile.open(string(fileName));
+    vector< vector<string> * > individualStrings;
+	for(int i =0; i < data->Individuals.size(); i++){
+        vector<string> * temp = new vector<string>();
+        temp->push_back((to_string(data->Individuals[i]->ID)));
+        temp->push_back(data->Individuals[i]->name);
+        individualStrings.push_back(temp);
+	}
+    vector<string> columnHeadings = {"id","name","gender","birthday","age","alive","death","child","spouse"};
+    outputFile << formatToTable(individualStrings,columnHeadings,20);
+	outputFile.close();
+}
+string GEDWriter::formatToTable(vector< vector<string> *> individualStrings,vector<string> columnHeadings, int columnSize){
+    string outputString = "";
+    for(int i=0;i<columnHeadings.size()*columnSize + columnHeadings.size()/2 + 2;i++){
+        outputString += "-";
+    }
+    outputString += "\n";
+    outputString += "|";
+    for(int i=0; i<columnHeadings.size(); i++){
+        //not optimied formatted for readability
+        //TODO this assumes the solumn size is bigger than the headings
+        int offset = (columnSize - columnHeadings[i].size()) /2;
+        for(int j=0;j<offset;j++){
+            outputString += " ";
+        }
+        outputString+= columnHeadings[i];
+        for(int j=0;j<offset;j++){
+            outputString += " ";
+        }
+        outputString += "|";
+    }
+    outputString += "\n";
+    for(int i=0;i<columnHeadings.size()*columnSize + columnHeadings.size()/2 + 2;i++){
+        outputString += "-";
+    }
+    return outputString;
+}
+
 bool GEDWriter::listTheDead(char* fileName){
     //TODO make it return a bool
     ofstream outputFile;
@@ -30,8 +72,8 @@ bool GEDWriter::listTheDead(char* fileName){
         outputFile<<tagToString(data->openingTags[i])<<endl;
     }
 	for(int i =0; i < data->Individuals.size(); i++){
-        if(data->Individuals[i]->checkIfDead()){
-            outputFile << checkIndividual(data->Individuals[i]);
+        if(data->Individuals[i]->isDead()){
+            outputFile << getCheckedIndividualGED(data->Individuals[i]);
         }
 	}
 	for(int i =0; i<data->Families.size(); i++){
@@ -52,11 +94,10 @@ string GEDWriter::tagToString(vector<string> * tag){
 }
 
 
-string GEDWriter::checkIndividual(Individual * individual){
+string GEDWriter::getCheckedIndividualGED(Individual * individual){
     vector< vector<int> * > nonUniqueIDS = GEDValidityTests::checkValidUniqueID(data);
     bool uniqueID = true;
     string output= "" ;
-    output +=  "@I"+ to_string(individual->ID)+"@ INDI\n";
     for(int i =0; i< (* nonUniqueIDS[0]).size(); i++){
         if(individual->ID == (* nonUniqueIDS[0])[i]){
             uniqueID = false;
@@ -75,7 +116,7 @@ string GEDWriter::checkIndividual(Individual * individual){
     }
     return output;
 }
-string GEDWriter::checkFamily(Family * family){
+string GEDWriter::getCheckedFamilyGED(Family * family){
     vector< vector<int> * > nonUniqueIDS = GEDValidityTests::checkValidUniqueID(data);
     bool uniqueID = true;
     string output= "" ;

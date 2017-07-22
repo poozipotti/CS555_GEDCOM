@@ -42,15 +42,10 @@ void GEDData::parseFile (){
 			//will skip lines that do not start with an ID
 			if((*parsedLine)[1][0] == '@'){
 				if((*parsedLine)[1][1] == 'I'){
-					int i = 2;
-					string ID = "";
-					while((*parsedLine)[1][i++] != '@'){
-						ID += (*parsedLine)[1][i-1];
-					}
-                    tempID = stoi(ID);
+                    addNewIndividual(parsedLine);
+                    tempID = Individuals.back()->ID;
 					parsingIndividual = true;
 					parsingFamily = false;
-                    addNewIndividual(tempID);
 				}else if((*parsedLine)[1][1] == 'F'){
 					int i = 2;
 					string ID = "";
@@ -71,14 +66,17 @@ void GEDData::parseFile (){
                 addTagToOpening(parsedLine);
             }
 		}
+        for(int i=0; i<Individuals.size();i++){
+            Individuals[i]->populateDataFromTags();
+           cout<< Individuals[i] ->toString() << endl;
+        }
 		cout << "finished parsing lines" << endl;
 	}else{
 		cout << "error opening file" << endl;
 	}
 }
-void GEDData::addNewIndividual(int ID){
-    Individuals.push_back(new Individual);
-    Individuals.back()->ID = ID;
+void GEDData::addNewIndividual(vector<string> * IDtag){
+    Individuals.push_back(new Individual(IDtag));
 
 }
 void GEDData::addNewFamily(int ID){
@@ -92,7 +90,7 @@ void GEDData::addTagToOpening(vector<string> * tag){
 void GEDData::addTagToIndividual(int ID, vector<string> * tag){
     for(int i =0; i<Individuals.size(); i++){
         if(Individuals[i]->ID == ID ){
-            Individuals[i]->tags.push_back(tag);
+            Individuals[i]->addTag(tag);
         }
     }
 

@@ -10,11 +10,11 @@ void IsDeadTest::tearDown(){
 
 }
 void IsDeadTest::testDeadIndividual(){
-	CPPUNIT_ASSERT_MESSAGE("individual who is dead repoted alive",(testReader->Individuals[0]->checkIfDead()));
+	CPPUNIT_ASSERT_MESSAGE("individual who is dead repoted alive",(testReader->Individuals[0]->isDead()));
 
 }
 void IsDeadTest::testLivingIndividual(){
-	CPPUNIT_ASSERT_MESSAGE("individual who is alive without  death tag reported dead",!(testReader->Individuals[3]->checkIfDead()));
-	CPPUNIT_ASSERT_MESSAGE("individual who is alive with negative death tag reported dead",!(testReader->Individuals[4]->checkIfDead()));
+	CPPUNIT_ASSERT_MESSAGE("individual who is alive without  death tag reported dead",!(testReader->Individuals[3]->isDead()));
+	CPPUNIT_ASSERT_MESSAGE("individual who is alive with negative death tag reported dead",!(testReader->Individuals[4]->isDead()));
 
 }
