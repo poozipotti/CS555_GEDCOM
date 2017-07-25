@@ -2,8 +2,7 @@
 
 Individual::Individual(vector < vector<string> * > _tags){
     tags = _tags;
-    ID = (getIDFromTags());
-    name =  getNameFromTags();
+    ID = (getIDFromTags()); name =  getNameFromTags();
     deathdate = getDeathdateFromTags();
     birthdate = getBirthdateFromTags();
 
@@ -86,6 +85,9 @@ string Individual::getNameFromTags(){
     vector<string> * nameTag = getTag("NAME");
     if(nameTag == NULL){
          return "no name specified";
+    }
+    if((*nameTag)[2].find("\r") != string::npos){
+         return (*nameTag)[2].substr(0,(*nameTag)[2].size()-1);
     }
     return (* nameTag)[2];
 }

@@ -72,7 +72,9 @@ class Date{
 		void setMonth(string);
 		void setMonthDay(int);
 		void setYear(int);
-		string toString();
+        string toString(){
+            return(to_string(month)+"/"+to_string(monthDay)+"/"+to_string(year));
+        };
 };
 
 #endif

@@ -18,12 +18,13 @@ class GEDWriter{
         string getCheckedIndividualGED(Individual *);
         string getCheckedFamilyGED(Family *);
         string tagToString(vector<string> * tag);
+        string getIndividualErrors();
     public:
         GEDWriter(GEDData * _data);
         bool writeNewGEDFile(char* fileName = "GED_PARSED.ged", bool test=true);
         bool writeOutputFile(char* fileName = "Validity_Output.ged", bool test=true);
         bool listTheDead(char* fileName = "GED_DEAD_MEMBERS.ged");
-        string formatToTable(vector< vector<string> * >, vector<string> columnHeadings,int columnSize);
+        string formatToTable(vector< vector<string> * > individualStrings, vector<string> columnHeadings,int columnSize);
 
 
 

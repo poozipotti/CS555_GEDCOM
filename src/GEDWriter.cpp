@@ -30,10 +30,36 @@ bool GEDWriter::writeOutputFile(char* fileName, bool Test){
         vector<string> * temp = new vector<string>();
         temp->push_back((to_string(data->Individuals[i]->ID)));
         temp->push_back(data->Individuals[i]->name);
+        if(data->Individuals[i]->isMale()){
+            temp->push_back("male");
+        }else{
+            temp->push_back("female");
+        }
+        if(data->Individuals[i]->birthdate != NULL){
+        temp->push_back(data->Individuals[i]->birthdate->toString());
+        }else{
+            temp->push_back("n/a");
+        }
+        temp->push_back("not implemented");
+        if(data->Individuals[i]->isDead()){
+            temp->push_back("False");
+            if(data->Individuals[i]->deathdate != NULL){
+                temp->push_back(data->Individuals[i]->deathdate->toString());
+            }else{
+                temp->push_back("n/a");
+            }
+        }else{
+            temp->push_back("True");
+            temp->push_back("n/a");
+        }
+        temp->push_back("not implemented");
+        temp->push_back("not implemented");
         individualStrings.push_back(temp);
 	}
     vector<string> columnHeadings = {"id","name","gender","birthday","age","alive","death","child","spouse"};
-    outputFile << formatToTable(individualStrings,columnHeadings,20);
+    outputFile << formatToTable(individualStrings,columnHeadings,28);
+    outputFile << "\n\n///////////////////////ERRORS//////////////////////////\n\n" ;
+    outputFile << getIndividualErrors();
 	outputFile.close();
 }
 string GEDWriter::formatToTable(vector< vector<string> *> individualStrings,vector<string> columnHeadings, int columnSize){
@@ -42,6 +68,7 @@ string GEDWriter::formatToTable(vector< vector<string> *> individualStrings,vect
         outputString += "-";
     }
     outputString += "\n";
+
     outputString += "|";
     for(int i=0; i<columnHeadings.size(); i++){
         //not optimied formatted for readability
@@ -51,6 +78,9 @@ string GEDWriter::formatToTable(vector< vector<string> *> individualStrings,vect
             outputString += " ";
         }
         outputString+= columnHeadings[i];
+        if(columnHeadings[i].size() %2 != 0){
+            offset++;
+        }
         for(int j=0;j<offset;j++){
             outputString += " ";
         }
@@ -60,6 +90,37 @@ string GEDWriter::formatToTable(vector< vector<string> *> individualStrings,vect
     for(int i=0;i<columnHeadings.size()*columnSize + columnHeadings.size()/2 + 2;i++){
         outputString += "-";
     }
+    outputString += "\n";
+    for(int i= 0; i<individualStrings.size(); i++){
+        outputString += "|";
+        for(int j=0; j<columnHeadings.size();j++){
+            int offset =0;
+            if(j<(individualStrings[i]->size())){
+                offset = (columnSize - (*individualStrings[i])[j].size()) /2;
+
+                for(int h=0;h<offset;h++){
+                    outputString += " ";
+                }
+                outputString+= (*individualStrings[i])[j];
+                if((*individualStrings[i])[j].size() %2 != 0){
+                    offset++;
+                }
+            }else{
+                offset = columnSize;
+            }
+            for(int h=0;h<offset;h++){
+                outputString += " ";
+            }
+            outputString += "|";
+
+        }
+        outputString += "\n";
+        for(int h=0;h<columnHeadings.size()*columnSize + columnHeadings.size()/2 + 2;h++){
+            outputString += "-";
+        }
+        outputString += "\n";
+    }
+
     return outputString;
 }
 
@@ -93,7 +154,24 @@ string GEDWriter::tagToString(vector<string> * tag){
     return output;
 }
 
+string GEDWriter::getIndividualErrors(){
+    string output;
+    vector< vector<int> * > nonUniqueIDS = GEDValidityTests::checkValidUniqueID(data);
+    for(int i=0;i<data->Individuals.size(); i++){
+        for(int j =0; j< (* nonUniqueIDS[0]).size(); j++){
+            if(data->Individuals[i]->ID == (* nonUniqueIDS[0])[j]){
+                output += "ERROR individual @" + to_string(data->Individuals[i]->ID) +"@ with name " + data->Individuals[i]->name + " does not have a unique ID\n";
+                break;
+            }
+        }
+        if(!GEDValidityTests::checkValidBirthBeforeDeath(data->Individuals[i])){
+                output += "ERROR individual @" + to_string(data->Individuals[i]->ID) +"@ with name " + data->Individuals[i]->name + "died before they were born\n";
+        }
 
+
+    }
+    return output;
+}
 string GEDWriter::getCheckedIndividualGED(Individual * individual){
     vector< vector<int> * > nonUniqueIDS = GEDValidityTests::checkValidUniqueID(data);
     bool uniqueID = true;
