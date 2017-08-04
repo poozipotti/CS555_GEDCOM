@@ -6,6 +6,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <ctime>
+#include <cmath>
 
 using namespace std;
 
@@ -17,12 +19,14 @@ class Date{
 		const string MONTHS[12] = {"JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"};
 		const  int NUMBER_OF_MONTHS = 12;
 	public:
+        struct tm * timeStruct;
 		//will initilize a date with (0,0,0)
-		Date ():Date(0,0,0){};
-	        Date (int _month,int _day,int _year);
+		Date ():Date(time(0)){};
+        Date (int _month,int _day,int _year);
 		Date( string _month, int _day, int _year);
+        Date(time_t);
 		//will initilize a date from tag data
-	        Date (vector<string> *);
+        Date (vector<string> *);
 
 		void setFromTag(vector<string> *);
 
@@ -35,6 +39,9 @@ class Date{
 		int getYear(){
 			return year;
 		}
+        //subtract reuturns a vector that in the format of [years.months,days] between two dates
+        static double  getDaysBetween(Date* ,Date* );
+        static double  getYearsBetween(Date* ,Date* );
 		bool operator==(const Date& d){
 			return (month == d.month && monthDay == d.monthDay && d.year == year);
 		}

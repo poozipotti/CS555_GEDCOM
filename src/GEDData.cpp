@@ -68,7 +68,6 @@ void GEDData::parseFile (){
 		}
         for(int i=0; i<Individuals.size();i++){
             Individuals[i]->populateDataFromTags();
-           cout<< Individuals[i] ->toString() << endl;
         }
 		cout << "finished parsing lines" << endl;
 	}else{
@@ -108,11 +107,11 @@ void GEDData::addMemberToFamily(int ID, vector<string> * tag){
                         ID += (*tag)[2][j-1];
                     }
                     if((*tag)[1] == "HUSB"){
-                        Families[i]->husbandIds.push_back(stoi(ID));
+                        Families[i]->husbandIds.push_back(getIndividualByID(stoi(ID)));
                     }else if((*tag)[1] == "WIFE"){
-                        Families[i]->wifeIds.push_back(stoi(ID));
+                        Families[i]->wifeIds.push_back(getIndividualByID(stoi(ID)));
                     }else if((*tag)[1] == "CHIL"){
-                        Families[i]->childIds.push_back(stoi(ID));
+                        Families[i]->childIds.push_back(getIndividualByID(stoi(ID)));
                     }
                 }else if((*tag)[1] == "_CURRENT" ){
                     Families[i]->current = ((*tag)[2] == "Y");
@@ -121,4 +120,14 @@ void GEDData::addMemberToFamily(int ID, vector<string> * tag){
         }
     }
 }
+Individual * GEDData::getIndividualByID(int ID){
 
+    for(int i=0; i<Individuals.size();i++){
+        if(Individuals[i]->ID == ID){
+            return Individuals[i];
+        }
+    }
+
+    cerr << "indiviudal with ID of " << ID<< "could not be found" << endl;
+    return NULL;
+}

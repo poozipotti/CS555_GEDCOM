@@ -19,6 +19,7 @@ class GEDWriter{
         string getCheckedFamilyGED(Family *);
         string tagToString(vector<string> * tag);
         string getIndividualErrors();
+        string getFamilyErrors();
     public:
         GEDWriter(GEDData * _data);
         bool writeNewGEDFile(char* fileName = "GED_PARSED.ged", bool test=true);

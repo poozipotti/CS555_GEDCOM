@@ -43,14 +43,33 @@ Date::Date(int _month, int _day, int _year){
 	setMonth(_month);
 	setMonthDay(_day);
 	setYear(_year);
+    timeStruct = new tm;
+    timeStruct->tm_year = year -1900;
+    timeStruct->tm_mon = month;
+    timeStruct->tm_mday = monthDay;
+
 };
 
 Date::Date(string _month, int _day, int _year){
 	setMonth(_month);
 	setMonthDay(_day);
 	setYear(_year);
+    timeStruct = new tm;
+    timeStruct->tm_year = _year -1900;
+    timeStruct->tm_mon = month;
+    timeStruct->tm_mday = monthDay;
 };
-
+Date::Date(time_t time){
+    timeStruct = localtime(&time);
+}
+double Date::getDaysBetween(Date * dateOne, Date * dateTwo){
+    time_t dateOneSecs = mktime(dateOne->timeStruct);
+    time_t dateTwoSecs = mktime(dateTwo->timeStruct);
+    return floor(difftime(dateOneSecs,dateTwoSecs) / (60* 60*24));
+}
+double Date::getYearsBetween(Date* dateOne,Date* dateTwo ){
+    return floor(getDaysBetween(dateOne,dateTwo)/365);
+}
 void Date::setFromTag(vector<string> * tag){
 	if((* tag)[1] != "DATE"){
 		throw "must be given a DATE tag!";

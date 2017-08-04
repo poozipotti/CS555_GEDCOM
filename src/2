@@ -60,52 +60,32 @@ bool GEDWriter::writeOutputFile(char* fileName, bool Test){
 	}
     vector<string> columnHeadings = {"id","name","gender","birthday","age","alive","death","child","spouse"};
     outputFile << formatToTable(individualStrings,columnHeadings,28);
-    outputFile << "\n\n///////////////////////INDIVIDUAL ERRORS//////////////////////////\n\n" ;
+    outputFile << "\n\n///////////////////////ERRORS//////////////////////////\n\n" ;
     outputFile << getIndividualErrors();
     ///////////////////Families//////////////////////////////////////////////////////////////
-
     vector<vector<string> * > familyStrings;
 	for(int i =0; i < data->Families.size(); i++){
         vector<string> * temp = new vector<string>();
         temp->push_back((to_string(data->Families[i]->ID)));
         temp->push_back("not implemented");
         temp->push_back("not implemented");
-        if(data->Families[i]->husbandIds.empty() || data->Families[i]->husbandIds[0] == NULL){
-            temp->push_back("n/a");
-            temp->push_back("n/a");
-        }else{
-            temp->push_back( "@" + to_string(data->Families[i]->husbandIds[0]->ID) + "@");
-            temp->push_back( data->Families[i]->husbandIds[0]->name);
-        }
-        if(data->Families[i]->wifeIds.empty() || data->Families[i]->wifeIds[0] == NULL){
-            temp->push_back("n/a");
-            temp->push_back("n/a");
-        }else{
-            temp->push_back("@"+ to_string(data->Families[i]->wifeIds[0]->ID) + "@");
-            temp->push_back( data->Families[i]->wifeIds[0]->name);
-        }
+        temp->push_back(to_string(data->Families[i]->husbandIds[0]->ID));
+        temp->push_back(to_string(data->Families[i]->husbandIds[0]->name));
+        temp->push_back(to_string(data->Families[i]->wifeIds[0]->ID));
+        temp->push_back(to_string(data->Families[i]->wifeIds[0]->name));
         string tempString = "{";
         for(int j=0;j< data->Families[i]->childIds.size();j++){
             if(j!= 0){
-                tempString += ",";
+                tempString += ", "
             }
-            if(data->Families[i]->childIds[j] == NULL){
-                tempString += "error" ;
-            }else{
-                tempString += "@";
-                tempString += to_string(data->Families[i]->childIds[j]->ID);
-                tempString += "@";
-            }
+            tempString += to_string(data->Families[i]->childIds[j]->ID);
+
         }
         tempString+="}";
         temp->push_back(tempString);
         familyStrings.push_back(temp);
 	}
     vector<string> familyColumnHeadings = {"id","Married","Divorced","HusbandId","Husband Name","WifeId","Wife Name","children"};
-    outputFile << "\n\n" <<endl;
-    outputFile << formatToTable(familyStrings,familyColumnHeadings,28);
-    outputFile << "\n\n///////////////////////Family ERRORS//////////////////////////\n\n" ;
-    outputFile << getFamilyErrors();
 
 	outputFile.close();
 }
@@ -219,33 +199,6 @@ string GEDWriter::getIndividualErrors(){
     }
     return output;
 }
-string GEDWriter::getFamilyErrors(){
-    string output;
-    vector< vector<int> * > nonUniqueIDS = GEDValidityTests::checkValidUniqueID(data);
-    for(int i=0;i<data->Families.size(); i++){
-        for(int j =0; j< (* nonUniqueIDS[1]).size(); j++){
-            if(data->Families[i]->ID == (* nonUniqueIDS[1])[j]){
-                output += "ERROR Family @" + to_string(data->Families[i]->ID) +"@ does not have a unique ID\n";
-                break;
-            }
-        }
-        try{
-            if(!GEDValidityTests::checkFatherGender(data->Families[i])){
-                output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ FATHER IS LISTED AS FEMALE \n";
-            }
-            if(!GEDValidityTests::checkMotherGender(data->Families[i])){
-                output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ MOTHER IS LISTED AS MALE \n";
-
-            }
-        }catch(char const* error){
-            cerr << "there was an error in finding a husband or wife when trying to check their gender, check for duplicate ids" << endl;
-        }
-
-
-    }
-    return output;
-}
-
 string GEDWriter::getCheckedIndividualGED(Individual * individual){
     vector< vector<int> * > nonUniqueIDS = GEDValidityTests::checkValidUniqueID(data);
     bool uniqueID = true;

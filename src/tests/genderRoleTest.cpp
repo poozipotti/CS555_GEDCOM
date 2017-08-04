@@ -12,17 +12,17 @@ void GenderRoleTest::tearDown(){
 }
 void GenderRoleTest::testFamilyCorrectGenders(){
     CPPUNIT_ASSERT_MESSAGE("incorrect Family passed as correct",
-    GEDValidityTests::checkFatherGender(testReader->Families[4],testReader) &&
-    GEDValidityTests::checkMotherGender(testReader->Families[4],testReader));
+    GEDValidityTests::checkFatherGender(testReader->Families[4]) &&
+    GEDValidityTests::checkMotherGender(testReader->Families[4]));
 }
 
 void GenderRoleTest::testMotherWrongGender(){
     CPPUNIT_ASSERT_MESSAGE("incorrect Mother gender passed as correct",
-    !GEDValidityTests::checkMotherGender(testReader->Families[3],testReader));
+    !GEDValidityTests::checkMotherGender(testReader->Families[3]));
 }
 
 void GenderRoleTest::testFatherWrongGender(){
     CPPUNIT_ASSERT_MESSAGE("incorrect Father gender passed as correct",
-    !GEDValidityTests::checkFatherGender(testReader->Families[3],testReader));
+    !GEDValidityTests::checkFatherGender(testReader->Families[3]));
 
 }

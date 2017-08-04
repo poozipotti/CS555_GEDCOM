@@ -5,6 +5,8 @@
 #include "../include/isDeadTest.hh"
 #include "../include/uniqueIDTest.hh"
 #include "../include/GenderRoleTest.hh"
+#include "../include/Date.hh"
+#include <ctime>
 
 void displayHelp(){
     cout << "Help: \n  correct useage is GEDReader <filename> <optional tags>" << endl;
