@@ -14,6 +14,8 @@ void displayHelp(){
 }
 main(int argc, char * argv[]){
     //TODO implement silent and verbose tags
+    Date today;
+    cout<< "today is" + today.toString() << endl;
     bool shouldTest = true;
     bool help = false;
     if(argc < 2){

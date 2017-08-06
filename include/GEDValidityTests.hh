@@ -23,5 +23,6 @@ namespace GEDValidityTests{
     vector< vector<int> *> checkValidUniqueID(GEDData *);
     bool checkFatherGender(Family *);
     bool checkMotherGender(Family *);
+    bool checkDateBeforeToday(Date *);
 };
 #endif

@@ -61,6 +61,10 @@ Date::Date(string _month, int _day, int _year){
 };
 Date::Date(time_t time){
     timeStruct = localtime(&time);
+	setMonth(timeStruct->tm_mon);
+	setMonthDay(timeStruct->tm_mday);
+	setYear(timeStruct->tm_year + 1900);
+
 }
 double Date::getDaysBetween(Date * dateOne, Date * dateTwo){
     time_t dateOneSecs = mktime(dateOne->timeStruct);

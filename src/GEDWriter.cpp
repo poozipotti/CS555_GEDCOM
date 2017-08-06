@@ -26,6 +26,8 @@ bool GEDWriter::writeOutputFile(char* fileName, bool Test){
     //TODO make it return a bool
     ofstream outputFile;
 	outputFile.open(string(fileName));
+    Date * today = new Date();
+    outputFile << "Output created on:" + (today->toString()) << endl;
     vector< vector<string> * > individualStrings;
     /////////Individuals/////////////////////////////////////////////////
 	for(int i =0; i < data->Individuals.size(); i++){
@@ -214,6 +216,14 @@ string GEDWriter::getIndividualErrors(){
         if(!GEDValidityTests::checkValidBirthBeforeDeath(data->Individuals[i])){
                 output += "ERROR individual @" + to_string(data->Individuals[i]->ID) +"@ with name " + data->Individuals[i]->name + "died before they were born\n";
         }
+        if(data->Individuals[i]->birthdate && !GEDValidityTests::checkDateBeforeToday(data->Individuals[i]->birthdate)){
+                output += "ERROR individual @" + to_string(data->Individuals[i]->ID) +"@ with name " + data->Individuals[i]->name + "was born in the future\n";
+        }
+
+        if(data->Individuals[i]->deathdate && !GEDValidityTests::checkDateBeforeToday(data->Individuals[i]->deathdate)){
+                output += "ERROR individual @" + to_string(data->Individuals[i]->ID) +"@ with name " + data->Individuals[i]->name + "died in the future\n";
+        }
+
 
 
     }
