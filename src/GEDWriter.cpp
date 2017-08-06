@@ -266,6 +266,9 @@ string GEDWriter::getFamilyErrors(){
         if(data->Families[i]->married && !GEDValidityTests::checkDateBeforeToday(data->Families[i]->married)){
                 output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ marriage date is in the future \n";
         }
+        if(!GEDValidityTests::checkMarriageBeforeDivorce(data->Families[i])){
+                output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ Divorce Date is listed as being before Marriage Date  \n";
+        }
 
     }
     return output;
