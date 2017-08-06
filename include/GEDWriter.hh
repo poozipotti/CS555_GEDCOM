@@ -23,7 +23,7 @@ class GEDWriter{
     public:
         GEDWriter(GEDData * _data);
         bool writeNewGEDFile(char* fileName = "GED_PARSED.ged", bool test=true);
-        bool writeOutputFile(char* fileName = "Validity_Output.ged", bool test=true);
+        bool writeOutputFile(char* fileName = "Validity_Output.txt", bool test=true);
         bool listTheDead(char* fileName = "GED_DEAD_MEMBERS.ged");
         string formatToTable(vector< vector<string> * > individualStrings, vector<string> columnHeadings,int columnSize);
 

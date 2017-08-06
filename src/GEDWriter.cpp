@@ -251,10 +251,10 @@ string GEDWriter::getFamilyErrors(){
         }
         try{
             if(!GEDValidityTests::checkFatherGender(data->Families[i])){
-                output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ FATHER IS LISTED AS FEMALE \n";
+                output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ father is listed as female \n";
             }
             if(!GEDValidityTests::checkMotherGender(data->Families[i])){
-                output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ MOTHER IS LISTED AS MALE \n";
+                output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ mother is listed as male \n";
 
             }
         }catch(char const* error){
@@ -269,7 +269,9 @@ string GEDWriter::getFamilyErrors(){
         if(!GEDValidityTests::checkMarriageBeforeDivorce(data->Families[i])){
                 output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ Divorce Date is listed as being before Marriage Date  \n";
         }
-
+        if(!GEDValidityTests::checkMarriageBeforeDeath(data->Families[i])){
+                output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ a spouse is listed as dying before the date of their marriage!  \n";
+        }
     }
     return output;
 }

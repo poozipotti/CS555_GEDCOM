@@ -26,5 +26,6 @@ namespace GEDValidityTests{
     bool checkDateBeforeToday(Date *);
     bool checkTooOld(Individual *);
     bool checkMarriageBeforeDivorce(Family * );
+    bool checkMarriageBeforeDeath(Family * );
 };
 #endif
