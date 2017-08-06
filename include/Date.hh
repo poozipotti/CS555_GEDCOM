@@ -40,8 +40,8 @@ class Date{
 			return year;
 		}
         //subtract reuturns a vector that in the format of [years.months,days] between two dates
-        static double  getDaysBetween(Date* ,Date* );
-        static double  getYearsBetween(Date* ,Date* );
+        static int  getDaysBetween(Date* ,Date* );
+        static int  getYearsBetween(Date* ,Date* );
 		bool operator==(const Date& d){
 			return (month == d.month && monthDay == d.monthDay && d.year == year);
 		}

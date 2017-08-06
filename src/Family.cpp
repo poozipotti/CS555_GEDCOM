@@ -3,5 +3,5 @@ Date * Family::addDivorceDate(vector<string> * tag){
     divorced = new Date(tag);
 }
 Date * Family::addMarryDate(vector<string> * tag){
-    divorced = new Date(tag);
+    married = new Date(tag);
 }

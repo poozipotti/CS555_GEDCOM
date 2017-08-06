@@ -24,5 +24,6 @@ namespace GEDValidityTests{
     bool checkFatherGender(Family *);
     bool checkMotherGender(Family *);
     bool checkDateBeforeToday(Date *);
+    bool checkTooOld(Individual *);
 };
 #endif

@@ -60,8 +60,17 @@ void GEDData::parseFile (){
 			}else if(parsingIndividual){
                 addTagToIndividual(tempID,parsedLine);
 			}else if(parsingFamily){
-                addMemberToFamily(tempID,parsedLine);
-
+                if((*parsedLine)[1].substr(0,4) == "MARR"){
+                    getline (inputFile,line);
+                    parsedLine = parseLine(line);
+                    addMarriageToFamily(tempID,parsedLine);
+                }else if((*parsedLine)[1].substr(0,3) == "DIV"){
+                    getline (inputFile,line);
+                    parsedLine = parseLine(line);
+                    addDivorceToFamily(tempID,parsedLine);
+                }else{
+                    addMemberToFamily(tempID,parsedLine);
+                }
             }else{
                 addTagToOpening(parsedLine);
             }
@@ -96,6 +105,20 @@ void GEDData::addTagToIndividual(int ID, vector<string> * tag){
     //throw("Individual was not found in individual list");
 }
 //TODO reflect that addMemberToFamily also sets _CRURRET tag
+void GEDData::addMarriageToFamily(int ID, vector<string> * tag){
+    for(int i =0; i<Families.size(); i++){
+        if(Families[i]->ID == ID ){
+            Families[i]->addMarryDate(tag);
+        }
+    }
+}
+void GEDData::addDivorceToFamily(int ID, vector<string> * tag){
+    for(int i =0; i<Families.size(); i++){
+        if(Families[i]->ID == ID ){
+            Families[i]->addDivorceDate(tag);
+      }
+    }
+}
 void GEDData::addMemberToFamily(int ID, vector<string> * tag){
     for(int i =0; i<Families.size(); i++){
         if(Families[i]->ID == ID ){
@@ -128,6 +151,6 @@ Individual * GEDData::getIndividualByID(int ID){
         }
     }
 
-    cerr << "indiviudal with ID of " << ID<< "could not be found" << endl;
+    //cerr << "indiviudal with ID of " << ID<< "could not be found" << endl;
     return NULL;
 }

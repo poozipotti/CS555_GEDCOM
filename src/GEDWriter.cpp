@@ -40,11 +40,15 @@ bool GEDWriter::writeOutputFile(char* fileName, bool Test){
             temp->push_back("female");
         }
         if(data->Individuals[i]->birthdate != NULL){
-        temp->push_back(data->Individuals[i]->birthdate->toString());
+            temp->push_back(data->Individuals[i]->birthdate->toString());
         }else{
             temp->push_back("n/a");
         }
-        temp->push_back("not implemented");
+        if(data->Individuals[i]->age < 0){
+            temp->push_back("error");
+        }else{
+            temp->push_back(to_string(data->Individuals[i]->age));
+        }
         if(data->Individuals[i]->isDead()){
             temp->push_back("False");
             if(data->Individuals[i]->deathdate != NULL){
@@ -56,11 +60,9 @@ bool GEDWriter::writeOutputFile(char* fileName, bool Test){
             temp->push_back("True");
             temp->push_back("n/a");
         }
-        temp->push_back("not implemented");
-        temp->push_back("not implemented");
         individualStrings.push_back(temp);
 	}
-    vector<string> columnHeadings = {"id","name","gender","birthday","age","alive","death","child","spouse"};
+    vector<string> columnHeadings = {"id","name","gender","birthday","age","alive","death"};
     outputFile << formatToTable(individualStrings,columnHeadings,28);
     outputFile << "\n\n///////////////////////INDIVIDUAL ERRORS//////////////////////////\n\n" ;
     outputFile << getIndividualErrors();
@@ -70,8 +72,16 @@ bool GEDWriter::writeOutputFile(char* fileName, bool Test){
 	for(int i =0; i < data->Families.size(); i++){
         vector<string> * temp = new vector<string>();
         temp->push_back((to_string(data->Families[i]->ID)));
-        temp->push_back("not implemented");
-        temp->push_back("not implemented");
+        if(data->Families[i]->married != NULL){
+            temp->push_back(data->Families[i]->married->toString());
+        }else{
+            temp->push_back("n/a");
+        }
+        if(data->Families[i]->divorced != NULL){
+            temp->push_back(data->Families[i]->divorced->toString());
+        }else{
+            temp->push_back("n/a");
+        }
         if(data->Families[i]->husbandIds.empty() || data->Families[i]->husbandIds[0] == NULL){
             temp->push_back("n/a");
             temp->push_back("n/a");
@@ -223,9 +233,9 @@ string GEDWriter::getIndividualErrors(){
         if(data->Individuals[i]->deathdate && !GEDValidityTests::checkDateBeforeToday(data->Individuals[i]->deathdate)){
                 output += "ERROR individual @" + to_string(data->Individuals[i]->ID) +"@ with name " + data->Individuals[i]->name + "died in the future\n";
         }
-
-
-
+        if(!GEDValidityTests::checkTooOld(data->Individuals[i])){
+                output += "ERROR individual @" + to_string(data->Individuals[i]->ID) +"@ with name " + data->Individuals[i]->name + "is impossibly old check birth and death dates\n";
+        }
     }
     return output;
 }
@@ -250,7 +260,12 @@ string GEDWriter::getFamilyErrors(){
         }catch(char const* error){
             cerr << "there was an error in finding a husband or wife when trying to check their gender, check for duplicate ids" << endl;
         }
-
+        if(data->Families[i]->divorced && !GEDValidityTests::checkDateBeforeToday(data->Families[i]->divorced)){
+                output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ divorce date is in the future \n";
+        }
+        if(data->Families[i]->married && !GEDValidityTests::checkDateBeforeToday(data->Families[i]->married)){
+                output += "ERROR Familiy @" + to_string(data->Families[i]->ID) +"@ marriage date is in the future \n";
+        }
 
     }
     return output;

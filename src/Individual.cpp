@@ -22,6 +22,17 @@ void Individual::populateDataFromTags(){
     deathdate = getDeathdateFromTags();
     birthdate = getBirthdateFromTags();
     //cout << "individual| id: " << ID << " | name: " + name << endl;
+    age = -1;
+    if(deathdate){
+        age = Date::getYearsBetween(deathdate,birthdate);
+    }else if(birthdate){
+        Date * now = new Date();
+        age = Date::getYearsBetween(now,birthdate);
+    }
+    if(age < 0){
+        age = -1;
+    }
+
 }
 Date * Individual::getBirthdateFromTags(){
 	for(int i = 0; i<tags.size() ;i++){
@@ -60,10 +71,10 @@ bool Individual::isMale(){
         for(int i = 0; i<tags.size() ;i++){
             if((* tags[i])[1] == "SEX"){
                 if((* tags[i])[2].substr(0,1) == "M"){
-                    cout <<ID << " is a male" << endl;
+                    //cout <<ID << " is a male" << endl;
                     return true;
                 }else{
-                    cout <<ID << " is a female" << endl;
+                    //cout <<ID << " is a female" << endl;
                     return false;
                 }
             }

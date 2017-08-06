@@ -28,6 +28,8 @@ class GEDData{
             void addTagToOpening(vector<string> * tag);
             void addTagToIndividual(int ID, vector<string> * tag);
             void addMemberToFamily(int ID, vector<string> * tag);
+            void addMarriageToFamily(int ID, vector<string> * tag);
+            void addDivorceToFamily(int ID, vector<string> * tag);
             Individual * getIndividualByID(int);
             //this is data that is before the first indiividual
             //TODO eventually make this data more granular

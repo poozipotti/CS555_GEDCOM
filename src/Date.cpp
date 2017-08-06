@@ -37,6 +37,10 @@ void Date::setYear(int _year){
 
 Date::Date(vector<string> * tag){
 	setFromTag(tag);
+    timeStruct = new tm;
+    timeStruct->tm_year = year -1900;
+    timeStruct->tm_mon = month;
+    timeStruct->tm_mday = monthDay;
 };
 
 Date::Date(int _month, int _day, int _year){
@@ -66,12 +70,12 @@ Date::Date(time_t time){
 	setYear(timeStruct->tm_year + 1900);
 
 }
-double Date::getDaysBetween(Date * dateOne, Date * dateTwo){
+int Date::getDaysBetween(Date * dateOne, Date * dateTwo){
     time_t dateOneSecs = mktime(dateOne->timeStruct);
     time_t dateTwoSecs = mktime(dateTwo->timeStruct);
     return floor(difftime(dateOneSecs,dateTwoSecs) / (60* 60*24));
 }
-double Date::getYearsBetween(Date* dateOne,Date* dateTwo ){
+int Date::getYearsBetween(Date* dateOne,Date* dateTwo ){
     return floor(getDaysBetween(dateOne,dateTwo)/365);
 }
 void Date::setFromTag(vector<string> * tag){

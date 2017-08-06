@@ -12,7 +12,7 @@ struct Individual{
     Date * birthdate;
     vector<int> * childIds;
     vector<int> * spouseIds;
-
+    int age;
     Individual(vector < vector<string> * > _tags);
     Individual(vector<string> *  _tags);
     bool isDead();
